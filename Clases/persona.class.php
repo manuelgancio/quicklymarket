@@ -161,6 +161,9 @@ public function login(){
 public function logout(){
 
 }
-
-
+public function coincideLoginPassword($conex)
+    {
+        $pu= new PersistenciaUsuario;
+        return $pu->verificarLoginPassword($this, $conex);   
+    }
 }
