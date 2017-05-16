@@ -1,6 +1,6 @@
 <?php
 
-class art_pub  //publicacion 
+class art_pub  //publicacionn
 {
     private $id;
     private $fecha_inicio;
