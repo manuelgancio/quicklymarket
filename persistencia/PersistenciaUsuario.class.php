@@ -35,7 +35,7 @@ class PersistenciaUsuario
 								":horario" => $horario,":fecnac"=>$fecNac));
         
         
-        //Para saber si ocurrió un error
+        //Para saber si ocurriï¿½ un error
         if($result)
         {
           return(true);
@@ -52,28 +52,28 @@ class PersistenciaUsuario
    public function verificarLoginPassword($obj, $conex)
    {
         //Obtiene los datos del objeto $obj
-        $login= trim($obj->getLogin());
-        $pass= sha1(trim($obj->getPassword()));
+        $login= trim($obj->getCorreo());
+        $pass= trim($obj->getPassword());
 
-        $sql = "select * from usuario where login=:login and password=:pass";
+        $sql = "select * from usuario where correo=:login and pass_u=:pass";
 		
         $consulta = $conex->prepare($sql);
-		/* FORMA 1 de pasar los parametros es con el método bindParam
-		/* con bindParam ligamos los parámetros de la consulta a las variables
+		/* FORMA 1 de pasar los parametros es con el mï¿½todo bindParam
+		/* con bindParam ligamos los parï¿½metros de la consulta a las variables
 		$consulta->bindParam(':login', $login, PDO::PARAM_STR);
 		$consulta->bindParam(':pass', $pass, PDO::PARAM_STR);
 		$consulta->execute();
 		*/
 		
-		/* FORMA 2es pasar los parámetros como argumentos del método execute
+		/* FORMA 2es pasar los parï¿½metros como argumentos del mï¿½todo execute
 		 utilizando un array asociativo */
 		$consulta->execute(array(":login" => $login, ":pass" => $pass));
 		
-		/*Despues de ejecutar la consulta como es un SELECT debo utilizar el método
+		/*Despues de ejecutar la consulta como es un SELECT debo utilizar el mï¿½todo
 		fetchAll que devuelve un array que contiene todas las filas del conjunto de resultados
 		*/
 		$result = $consulta->fetchAll();
-		//Devuelvo el array que puede tener un registro o estar vacio si el usuario y contraseña no coinciden
+		//Devuelvo el array que puede tener un registro o estar vacio si el usuario y contraseï¿½a no coinciden
 		return $result;
     }
 

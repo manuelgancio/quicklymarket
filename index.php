@@ -42,17 +42,16 @@
 							<input  class="button button4" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />
 						<th>
 						<tr>
+							
 						<tr>
 							<th>
 								<a href="#">¿No estás registrado?</a>
 							</th>
 						<tr>
 					</table>
-
-
-
 				</div>
-				</form>	
+			</form>			
+
 				
 			</header>
 			<div class="main">
