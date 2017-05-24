@@ -41,8 +41,8 @@ require_once('../logica/funciones.php');
                     <td><input type='text' name='Telefono' id='Telefono' placeholder='Ingrese su Teléfono'> </td>
                 </tr>
                 <tr>
-                    <td> *País </td>  <!poner un drop down menu con los países disponibles>
-                    <td><input type='text' name='Pais' id='Pais' placeholder='Seleccione su país de recidencia'> </td>
+                    <td> *País </td>  
+                    <td><input type='text' name='Departamento' id='Departamento' placeholder='Seleccione su departamanto de recidencia'> </td>
                 </tr>
                 <tr>
                     <td> *Ciudad </td> <!drop down menu>

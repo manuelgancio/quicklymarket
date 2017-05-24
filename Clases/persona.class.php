@@ -4,31 +4,33 @@ require_once('../persistencia/PersistenciaUsuario.class.php');
 class Persona
 {
     private $id;
+    private $id_usuario;
     private $nombre;
     private $apellido;
     private $correo;
     private $tel;
-    private $pais;
+    private $departamento;
     private $ciudad;
     private $calle;
     private $num_puerta;
     private $apto;
 
-    private $tipo_usuario;
+    private $tipo_usuario; // premium o basico -  basico = 0 premium = 1 en la base 
     private $password;
     private $reputacion;
     private $t_credito;
 
 
-    function __construct($id='',$nombre='',$apellido='',$correo='',$tel='',$pais='',$ciudad='',$calle='',$num_puerta='',
+    function __construct($id='',$id_usuario='',$nombre='',$apellido='',$correo='',$tel='',$departamento='',$ciudad='',$calle='',$num_puerta='',
     $apto='',$tipo_usuario='',$password='',$reputacion='',$t_credito='')
     {
         $this->id=$id;
+        $this->id_usuario=$id_usuario;
         $this->nombre=$nombre;
         $this->apellido=$apellido;
         $this->correo=$correo;
         $this->tel=$tel;
-        $this->pais=$pais;
+        $this->departamento=$departamento;
         $this->ciudad=$ciudad;
         $this->calle=$calle;
         $this->num_puerta=$num_puerta;
@@ -45,6 +47,9 @@ class Persona
 public function setId($id){
     $this->id=$id;
 }
+public function setIdUsuario($id_usuario){
+    $this->id_usuario=$id_usuario;
+}
 public function setNombre($nombre){
     $this->nombre=$nombre;
 }
@@ -57,8 +62,8 @@ public function setCorreo($correo){
 public function setTel($tel){
     $this->tel=$tel;
 }
-public function setPais($pais){
-    $this->pais=$pais;
+public function setDepartamento($departamento){
+    $this->departamento=$departamento;
 }
 public function setCiudad($ciudad){
     $this->ciudad=$cuidad;
@@ -87,6 +92,9 @@ public function setTcredito($t_credito){
 public function getId(){
     return $this->id;
 }
+public function getIdUsuario(){
+    return $this->id_usuario;
+}
 public function getNombre(){
     return $this->nombre;
 }
@@ -99,8 +107,8 @@ public function getCorreo(){
 public function getTel(){
     return $this->tel;
 }
-public function getPais(){
-    return $this->pais;
+public function getDepartamento(){
+    return $this->departamento;
 }
 public function getCiudad(){
     return $this->ciudad;

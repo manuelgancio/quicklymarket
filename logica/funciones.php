@@ -19,11 +19,8 @@ function desconectar(){
 }
 
 
-function elegirId(){
-
-
+function elegirIdPersona(){
     $conex = conectar();
-
     $sql='SELECT max(Id_P) as Id_P from Persona';
 
     foreach ($conex->query($sql) as $row) {
@@ -33,7 +30,18 @@ function elegirId(){
     }
 
     $newId = $maxId + 1; 
-   
+
+    return($newId);
+}
+
+function elegirIdUsuario(){
+    $conex = conectar();
+    $sql='SELECT max(Id_u) as Id_U from usuario';
+
+    foreach ($conex->query($sql) as $row){
+        $maxId = $row['Id_U'];
+    }
+    $newId = $maxId + 1; 
 
     return($newId);
 }
