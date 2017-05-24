@@ -1,6 +1,5 @@
 <?php
-if(!isset($_SESSION['PHPSESSID']) !="0") {
-	session_start(); }
+session_start(); 
 	
 require_once('../clases/persona.class.php');
 require_once('../logica/funciones.php');
@@ -9,7 +8,7 @@ require_once('../logica/funciones.php');
 $correo= strip_tags(trim($_POST['Correo']));
 $pass = strip_tags(trim($_POST['Password']));
 //Guardo el login en una variable de sesión
-$_SESSION["login"] = $login;
+$_SESSION["Correo"] = $correo;
 
 $conex = conectar();
 //$u= new Usuario ('',$login,md5($pass));
@@ -21,10 +20,12 @@ if (!empty($datos_u))
 //si no está vacio el array es que coinciden el login y la password
 {
 //die(var_dump($datos_u));
-$_SESSION["LOGIN"] =$datos_u[0]["login"];
+$_SESSION['logged'] = true; 
+$_SESSION["LOGIN"] =$datos_u[0]["Correo"];
 $_SESSION["CATEGORIA"] =$datos_u[0]["categoria"];
 ?>
 	 <script type="text/javascript">
+		//location.href="../presentacion/inicio.php";
 		location.href="../index.php";
 		window.alert('Se logeo correctamente');
 	</script>

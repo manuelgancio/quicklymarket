@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿<?php
+session_start();
+if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
+	echo "Bienvenido! " . $_SESSION['Correo'];
+}
+
+//	if (!isset($_SESSION[Correo])) {
+
+//}
+?>
+
+
+<!DOCTYPE html>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
