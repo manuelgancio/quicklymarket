@@ -15,9 +15,12 @@ class PersistenciaPersona
    $ciudad= $obj->getCiudad();
    $direccion= $obj->getCalle();
    $num_puerta= $obj->getNumPuerta();
+   $tipo_usuario= $obj->getTipoUsuario();
    $password= $obj->getPassword();
    $t_credito= $obj->getTcredito();
-   $tipo_usuario= $obj->getTipoUsuario();
+   
+
+
 
    //Encripto la password antes de guardarla
    //$password=sha1($password);
@@ -54,5 +57,36 @@ class PersistenciaPersona
         return(false);
     }
 }
+
+//Devuelve true si el login coincide con la password
+   public function verificarLoginPassword($obj, $conex)
+   {
+        //Obtiene los datos del objeto $obj
+        $correo= trim($obj->getCorreo());
+        $pass= trim($obj->getPassword());
+
+        $sql = "select * from usuario where correo=:correo and pass_u=:pass";
+		
+        $consulta = $conex->prepare($sql);
+		/* FORMA 1 de pasar los parametros es con el m�todo bindParam
+		/* con bindParam ligamos los par�metros de la consulta a las variables
+		$consulta->bindParam(':login', $login, PDO::PARAM_STR);
+		$consulta->bindParam(':pass', $pass, PDO::PARAM_STR);
+		$consulta->execute();
+		*/
+		
+		/* FORMA 2es pasar los par�metros como argumentos del m�todo execute
+		 utilizando un array asociativo */
+		$consulta->execute(array(":correo" => $correo, ":pass" => $pass));
+		
+		/*Despues de ejecutar la consulta como es un SELECT debo utilizar el m�todo
+		fetchAll que devuelve un array que contiene todas las filas del conjunto de resultados
+		*/
+		$result = $consulta->fetchAll();
+		//Devuelvo el array que puede tener un registro o estar vacio si el usuario y contrase�a no coinciden
+		return $result;
+    }
+
+
 }
 

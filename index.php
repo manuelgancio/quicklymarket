@@ -31,10 +31,10 @@
 
 					<table >
 						<tr>
-							<th><input type="text" name="NomUsuario" id="NomUsuario" placeholder="Usuario"> </th>
+							<th><input type="text" name="Correo" id="Correo" placeholder="Ingrese su correo"> </th>
 						</tr>
 						<tr>
-							<th><input type="Password" name="PassUsuario" id="PassUsuario" placeholder="contraseña"></th>
+							<th><input type="Password" name="Password" id="Password" placeholder="contraseña"></th>
 						</tr> 
 						<tr>
 						<th>

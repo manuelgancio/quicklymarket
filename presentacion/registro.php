@@ -41,7 +41,7 @@ require_once('../logica/funciones.php');
                     <td><input type='text' name='Telefono' id='Telefono' placeholder='Ingrese su Teléfono'> </td>
                 </tr>
                 <tr>
-                    <td> *País </td>  
+                    <td> *Departamento </td>  
                     <td><input type='text' name='Departamento' id='Departamento' placeholder='Seleccione su departamanto de recidencia'> </td>
                 </tr>
                 <tr>

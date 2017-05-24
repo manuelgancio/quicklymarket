@@ -18,17 +18,23 @@ $t_cretido = strip_tags($_POST['T_credito']);
 $id_P = elegirIdPersona();
 $id_U = elegirIdUsuario();
 
-//tipo usuario premium o basico 1= premium 0 = bsico
-$tipo_usuario = '0';
+//tipo usuario premium o basico 1= premium 0 = basico
+$tipo_usuario = 0;
 
 //conectar a la bd
 $conex = conectar();
 
 //crear objeto con los datos ingresados en el from
 $p = new Persona($id_P,$id_U,$nombre,$apellido,$correo,$telefono,$departamento,$ciudad,
-$direccion,$num_puerta,$password,$t_cretido, $tipo_usuario);
+$direccion,$num_puerta,'',$tipo_usuario,$password,'',$t_cretido);
 
 $p->altaPersona($conex);
+
+?>
+	 <script type="text/javascript">
+		location.href="../index.php";
+	</script>
+<?php
 
 
 

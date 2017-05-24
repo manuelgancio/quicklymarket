@@ -6,14 +6,14 @@ require_once('../clases/persona.class.php');
 require_once('../logica/funciones.php');
 
 //Obtiene los datos ingresados
-$login= strip_tags(trim($_POST['Usuario']));
-$pass = strip_tags(trim($_POST['Contraseña']));
+$correo= strip_tags(trim($_POST['Correo']));
+$pass = strip_tags(trim($_POST['Password']));
 //Guardo el login en una variable de sesión
 $_SESSION["login"] = $login;
 
 $conex = conectar();
 //$u= new Usuario ('',$login,md5($pass));
-$u= new persona ('',$login,$pass);
+$u= new persona ('','','','',$correo,'','','','','','','',$pass,'','');
 
 $datos_u=$u->coincideLoginPassword($conex);
 
@@ -25,7 +25,8 @@ $_SESSION["LOGIN"] =$datos_u[0]["login"];
 $_SESSION["CATEGORIA"] =$datos_u[0]["categoria"];
 ?>
 	 <script type="text/javascript">
-		location.href="../presentacion/cargamenu.php";
+		location.href="../index.php";
+		window.alert('Se logeo correctamente');
 	</script>
 <?php
 }
