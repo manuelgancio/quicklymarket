@@ -19,3 +19,21 @@ function desconectar(){
 }
 
 
+function elegirId(){
+
+
+    $conex = conectar();
+
+    $sql='SELECT max(Id_P) as Id_P from Persona';
+
+    foreach ($conex->query($sql) as $row) {
+       // print $row['Id_P'] ;
+
+        $maxId = $row['Id_P'];
+    }
+
+    $newId = $maxId + 1; 
+   
+
+    return($newId);
+}

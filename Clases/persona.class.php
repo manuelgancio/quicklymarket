@@ -1,5 +1,5 @@
 <?php
-
+require_once('../persistencia/PersistenciaPersona.class.php');
 require_once('../persistencia/PersistenciaUsuario.class.php');
 class Persona
 {
@@ -129,8 +129,9 @@ public function getTcredito(){
 
 //Mas metodos
 
-public function altaPersona(){
-
+public function altaPersona($conex){
+    $pp=new PersistenciaPersona;
+    return ($pp->agregarPersona($this, $conex));
 }
 public function modificarPersona(){
 

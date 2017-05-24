@@ -45,7 +45,7 @@
 							
 						<tr>
 							<th>
-								<a href="#">¿No estás registrado?</a>
+								<a href='../quicklymarket/presentacion/registro.php'>¿No estás registrado?</a>
 							</th>
 						<tr>
 					</table>
