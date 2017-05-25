@@ -36,5 +36,8 @@ $p->altaPersona($conex);
 	</script>
 <?php
 
+desconectar($conex);
+
+
 
 

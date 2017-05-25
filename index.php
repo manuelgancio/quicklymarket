@@ -35,8 +35,9 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 					</h1>
 				</div>
 				
-				
-				
+			<?php
+				if(!isset($_SESSION['logged'])){
+				?>
 				<form action="./logica/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
 
 				<div id="login" class="loginClass"> 
@@ -63,8 +64,15 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 					</table>
 				</div>
 			</form>			
-
-				
+			<?php
+				}else{
+					?>
+					<div>
+					<a href='presentacion/perfil.php'>Perfil</a>
+					</div>
+					<?php
+				}
+				?>
 			</header>
 			<div class="main">
 											
