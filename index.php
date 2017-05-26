@@ -3,10 +3,6 @@ session_start();
 if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 	echo "Bienvenido! " . $_SESSION['Correo'];
 }
-
-//	if (!isset($_SESSION[Correo])) {
-
-//}
 ?>
 
 
@@ -65,11 +61,16 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 				</div>
 			</form>			
 			<?php
-				}else{
+				}elseif(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True)
+				{
 					?>
 					<div>
 					<a href='presentacion/perfil.php'>Perfil</a>
 					</div>
+					<div>
+					<a href='presentacion/cerrarSesion.php'>Log out</a>
+					</div>
+
 					<?php
 				}
 				?>
