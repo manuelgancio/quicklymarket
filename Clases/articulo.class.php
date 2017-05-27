@@ -6,9 +6,9 @@ class articulo
     private $nombre;
     private $descripcion;
     private $categoria;
-    private $tipo; //boolean (venta o permuta)
+    private $tipo; //boolean (venta o permuta) true= venta false=permuta
     private $precio;
-    private $estado; //boolean (nuevo/usado)
+    private $estado; //boolean (nuevo/usado) true= nuevo false= usado
     private $stock; 
     private $img;
 
@@ -57,7 +57,7 @@ public function getId(){
 public function getNombre(){
     return $this->nombre;
 }
-public funtion getDescripcion(){
+public function getDescripcion(){
     return $this->descripcion;
 }
 public function getCategoria(){

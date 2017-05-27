@@ -24,7 +24,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 	<ol class="breadcrumb">
 		<li><a href='../index.php'> Inicio </a></li>
 		<li><a href='#'> Perfil</a></li>
-		<li><a href='#'> Publicaciones </a></li>
+		<li><a href='publicaciones.php'> Publicaciones </a></li>
 	</ol>
     <div>
     <h1>Perfil <?php echo $_SESSION['Correo'];?> <h1>

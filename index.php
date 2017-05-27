@@ -78,7 +78,10 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 			<div class="main">
 											
 					<div align="center" id="busquedaInicial">
-					<input class="w3-input" "type="text" name="Busqueda" placeholder="¿Que es lo que desea buscar?" size="80">
+					<form action='logica/procesarBusqueda.php' name='buscarForm' id='buscarForm' method='POST'> 
+					<input class="w3-input" type="text" name="Busqueda" id='Busqueda' placeholder="¿Que es lo que desea buscar?" size="80">
+					<input class"w3-input" type="submit" name='btnBuscar' value='BUSCAR'>
+					</form>
 					</div>
 					
 				<div id="mi-slider" class="mi-slider">
