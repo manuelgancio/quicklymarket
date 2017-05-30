@@ -4,4 +4,5 @@
 session_unset();
 session_destroy();
 
-header ('Location: ' . $PRESENTACION_DIR .'index.php');
+header ('Location: ' .$PRESENTACION .'/index.php');
+?>

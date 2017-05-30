@@ -23,8 +23,6 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
     <link href='<?=$CSS?>/demo.css' rel='stylesheet'>
     <!-- Custom styles for this template -->
     <link href="<?= $CSS?>/nav.css" rel="stylesheet">
-
-   
   </head>
 
   <body>
