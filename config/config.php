@@ -12,7 +12,7 @@
     $LOGICA='/logica';
     $PERSISTENCIA='/persistencia/';
     $JS ='/js/';
-    $IMG ='/images/';
+    $IMG ='/images';
     $CONFIG ='/config/';
     #PARA LLAMAR DESDE PHP#
     $PRESENTACION_DIR = $PATH .'/presentacion/';

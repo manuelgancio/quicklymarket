@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
+	echo "Bienvenido! " . $_SESSION['Correo'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +19,8 @@
 
     <!-- Bootstrap core CSS -->
     <link href='<?= $CSS?>/bootstrap.min.css' rel="stylesheet">
- 
+    <!--css -->
+    <link href='<?=$CSS?>/demo.css' rel='stylesheet'>
     <!-- Custom styles for this template -->
     <link href="<?= $CSS?>/nav.css" rel="stylesheet">
 
@@ -28,28 +33,70 @@
 
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
-      <div class="masthead">
-        <h3 class="text-muted">Project name</h3>
+      <img id='imglogo' class='img1' src='<?= $IMG?>/logoqm.png' alt='logo' width='70' height='80' >
+      <?php
+				if(!isset($_SESSION['logged'])){
+			?>
+
+      <div id='login' class='loginClass'>
+        <!--<h3 class="text-muted">Project name</h3>-->
+        
+        <form action="<?= $LOGICA?>/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
+				<table >
+						<tr>
+							<th><input type="text" name="Correo" id="Correo" placeholder="Ingrese su correo"> </th>
+						</tr>
+						<tr>
+							<th><input type="Password" name="Password" id="Password" placeholder="contraseña"></th>
+						</tr> 
+						<tr>
+						<th>
+						
+							<input  class="button button4" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />
+						<th>
+						<tr>
+							
+						<tr>
+							<th>
+								<a href='<?= $PRESENTACION?>/registro.php'>¿No estás registrado?</a>
+							</th>
+						<tr>
+					</table>
+				</div>
+			</form>			
+      <?php
+      #LO DEL ELSE SE MUESTRA CUANDO EL USUARIO ESTA LOGUEADO#
+				}elseif(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True)
+				{
+          ?>
+        <!--BARRA DE NAVEGACION-->
+        <div class="masthead">
         <nav>
           <ul class="nav nav-justified">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Downloads</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li ><a href="<?= $PRESENTACION?>/index.php">Inicio</a></li>
+            <li><a href="<?= $PRESENTACION?>/perfil.php">Perfil</a></li>
+            <li><a href="<?= $PRESENTACION?>/publicaciones.php">Mis Publicaciones</a></li>
+            <li><a href="#">Vender</a></li>
+            <li><a href="<?= $PRESENTACION?>/cerrarSesion.php">Log out</a></li>
           </ul>
         </nav>
       </div>
-
-      <!-- Jumbotron -->
+        <?php 
+        }
+        ?>
+      
+        
+      <!-- ESTO NO VA, QUEDA COMENTADO COMO EJEMPLO
+      
       <div class="jumbotron">
         <h1>Marketing stuff!</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
       </div>
+      -->
 
       <!-- Example row of columns -->
+      <!--
       <div class="row">
         <div class="col-lg-4">
           <h2>Safari bug warning!</h2>
@@ -68,12 +115,14 @@
           <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
         </div>
       </div>
+      -->
 
       <!-- Site footer -->
+      <!--
       <footer class="footer">
         <p>&copy; 2016 Company, Inc.</p>
       </footer>
 
     </div> <!-- /container -->
 
-
+  

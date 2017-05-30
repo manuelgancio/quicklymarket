@@ -57,6 +57,7 @@ a:hover {
 .loginClass{
 	float: right;
 	margin 10px;
+	
  }
 
 .clearfix:before,
@@ -179,3 +180,4 @@ a {
 	color: #aaa;
 	border-color: #aaa;
 }
+
