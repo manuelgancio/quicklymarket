@@ -1,8 +1,9 @@
 <?php
 session_start(); 
-	
-require_once('../clases/persona.class.php');
-require_once('../logica/funciones.php');
+require_once($CLASES_DIR .'persona.class.php');
+require_once($LOGICA_DIR.'funciones.php');
+#require_once('../clases/persona.class.php');
+#require_once('../logica/funciones.php');
 
 //Obtiene los datos ingresados
 $correo= strip_tags(trim($_POST['Correo']));
@@ -25,8 +26,8 @@ $_SESSION["LOGIN"] =$datos_u[0]["Correo"];
 $_SESSION["CATEGORIA"] =$datos_u[0]["categoria"];
 ?>
 	 <script type="text/javascript">
-		//location.href="../presentacion/inicio.php";
-		location.href="../index.php";
+		
+		location.href="../presentacion/index.php";
 		window.alert('Se logeo correctamente');
 	</script>
 <?php
@@ -38,7 +39,7 @@ else
  <script type="text/javascript">
  
    window.alert("El Usuario o Password \n no es correcto.");
-   location.href="../index.php";
+   location.href="../presentacion/index.php";
  </script>
   <?php  
 }

@@ -1,6 +1,6 @@
 <?php
-require_once('../persistencia/PersistenciaPersona.class.php');
-//require_once('../persistencia/PersistenciaUsuario.class.php');
+//require_once('../persistencia/PersistenciaPersona.class.php');
+require_once($PERSISTENCIA_DIR .'PersistenciaPersona.class.php');
 class Persona
 {
     private $id;

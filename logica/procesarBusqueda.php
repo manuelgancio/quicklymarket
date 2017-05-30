@@ -1,6 +1,8 @@
 <?php
-require_once('../clases/articulo.class.php');
-require_once('/funciones.php');
+#require_once('../clases/articulo.class.php');
+#require_once('/funciones.php');
+require_once($CLASES_DIR . 'articulo.class.php');
+require_once($LOGICA_DIR .'funciones.php');
 ?>
 <?php
 session_start();
@@ -20,8 +22,8 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 		<meta name="keywords" content="jquery plugin, item slider, categories, apple slider, css animation" />
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico"> 
-		<link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <script src="js/modernizr.custom.63321.js"></script>
+		<link rel="stylesheet" type="text/css" href="<?= $CSS?>/style.css" />
+        <script src="<?= $JS?>/modernizr.custom.63321.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 	</head>
@@ -37,7 +39,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 			<?php
 				if(!isset($_SESSION['logged'])){
 				?>
-				<form action="./logica/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
+				<form action="<?= $LOGICA?>/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
 
 				<div id="login" class="loginClass"> 
 
@@ -57,7 +59,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 							
 						<tr>
 							<th>
-								<a href='../quicklymarket/presentacion/registro.php'>¿No estás registrado?</a>
+								<a href='<?= $PRESENTACION?>/registro.php'>¿No estás registrado?</a>
 							</th>
 						<tr>
 					</table>
@@ -68,10 +70,10 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 				{
 					?>
 					<div>
-					<a href='presentacion/perfil.php'>Perfil</a>
+					<a href='<?= $PRESENTACION?>/perfil.php'>Perfil</a>
 					</div>
 					<div>
-					<a href='presentacion/cerrarSesion.php'>Log out</a>
+					<a href='<?= $PRESENTACION?>/cerrarSesion.php'>Log out</a>
 					</div>
 
 					<?php
@@ -96,3 +98,4 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
             ?>
             </div>
             </body>
+			

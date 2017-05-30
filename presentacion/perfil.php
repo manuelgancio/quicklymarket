@@ -22,9 +22,9 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 	</head>
     <body> 
 	<ol class="breadcrumb">
-		<li><a href='../index.php'> Inicio </a></li>
-		<li><a href='#'> Perfil</a></li>
-		<li><a href='publicaciones.php'> Publicaciones </a></li>
+		<li><a href='<?= $PRESENTACION?>/index.php'> Inicio </a></li>
+		<li><a href='<?= $PRESENTACION?>/perfil.php'> Perfil</a></li>
+		<li><a href='<?= $PRESENTACION?>/publicaciones.php'> Publicaciones </a></li>
 	</ol>
     <div>
     <h1>Perfil <?php echo $_SESSION['Correo'];?> <h1>

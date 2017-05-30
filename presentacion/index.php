@@ -17,8 +17,8 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 		<meta name="keywords" content="jquery plugin, item slider, categories, apple slider, css animation" />
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico"> 
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
-		<script src="js/modernizr.custom.63321.js"></script>
+		<link rel="stylesheet" type="text/css" href="<?= $CSS ?>style.css"/>
+		<script src="<?= $JS?>modernizr.custom.63321.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 	</head>
@@ -27,14 +27,14 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 			
 			<header class="clearfix">
 				<div id="titulo" class="titulo" >
-					<h1>Proyecto TA3 <span>Quicly market - V.1.0 </span>
+					<h1>Proyecto TA3 <span>Quickly market - V.1.0 </span>
 					</h1>
 				</div>
 				
 			<?php
 				if(!isset($_SESSION['logged'])){
 				?>
-				<form action="./logica/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
+				<form action="<?= $LOGICA?>/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
 
 				<div id="login" class="loginClass"> 
 
@@ -54,7 +54,9 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 							
 						<tr>
 							<th>
-								<a href='../quicklymarket/presentacion/registro.php'>¿No estás registrado?</a>
+								<a href='<?= $PRESENTACION?>/registro.php'>¿No estás registrado?</a>
+								<!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!>
+								<a href='<?php $PRESENTACION_DIR?>header.php'>header</a>
 							</th>
 						<tr>
 					</table>
@@ -65,10 +67,10 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 				{
 					?>
 					<div>
-					<a href='presentacion/perfil.php'>Perfil</a>
+					<a href='<?= $PRESENTACION?>/perfil.php'>Perfil</a>
 					</div>
 					<div>
-					<a href='presentacion/cerrarSesion.php'>Log out</a>
+					<a href='<?= $PRESENTACION?>/cerrarSesion.php'>Log out</a>
 					</div>
 
 					<?php
@@ -78,7 +80,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 			<div class="main">
 											
 					<div align="center" id="busquedaInicial">
-					<form action='logica/procesarBusqueda.php' name='buscarForm' id='buscarForm' method='POST'> 
+					<form action='<?= $LOGICA?>/procesarBusqueda.php' name='buscarForm' id='buscarForm' method='POST'> 
 					<input class="w3-input" type="text" name="Busqueda" id='Busqueda' placeholder="¿Que es lo que desea buscar?" size="80">
 					<input class"w3-input" type="submit" name='btnBuscar' value='BUSCAR'>
 					</form>
@@ -87,27 +89,27 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 				<div id="mi-slider" class="mi-slider">
 				
 					<ul>
-						<li><a href="#"><img src="images/1.jpg" alt="img01"><h4>Botas</h4></a></li>
-						<li><a href="#"><img src="images/2.jpg" alt="img02"><h4>zapatos</h4></a></li>
-						<li><a href="#"><img src="images/3.jpg" alt="img03"><h4>mocasines</h4></a></li>
-						<li><a href="#"><img src="images/4.jpg" alt="img04"><h4>championes</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/1.jpg" alt="img01"><h4>Botas</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/2.jpg" alt="img02"><h4>zapatos</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/3.jpg" alt="img03"><h4>mocasines</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/4.jpg" alt="img04"><h4>championes</h4></a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><img src="images/5.jpg" alt="img05"><h4>Cinturones</h4></a></li>
-						<li><a href="#"><img src="images/6.jpg" alt="img06"><h4>gorros &amp; </h4></a></li>
-						<li><a href="#"><img src="images/7.jpg" alt="img07"><h4>Lentes de sol</h4></a></li>
-						<li><a href="#"><img src="images/8.jpg" alt="img08"><h4>Bufandas</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/5.jpg" alt="img05"><h4>Cinturones</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/6.jpg" alt="img06"><h4>gorros &amp; </h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/7.jpg" alt="img07"><h4>Lentes de sol</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/8.jpg" alt="img08"><h4>Bufandas</h4></a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><img src="images/9.jpg" alt="img09"><h4>Casual</h4></a></li>
-						<li><a href="#"><img src="images/10.jpg" alt="img10"><h4>Retro</h4></a></li>
-						<li><a href="#"><img src="images/11.jpg" alt="img11"><h4>Sport</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/9.jpg" alt="img09"><h4>Casual</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/10.jpg" alt="img10"><h4>Retro</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/11.jpg" alt="img11"><h4>Sport</h4></a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><img src="images/12.jpg" alt="img12"><h4>Con ruedas</h4></a></li>
-						<li><a href="#"><img src="images/13.jpg" alt="img13"><h4>Carteras grandes</h4></a></li>
-						<li><a href="#"><img src="images/14.jpg" alt="img14"><h4>Para laptop</h4></a></li>
-						<li><a href="#"><img src="images/15.jpg" alt="img15"><h4>maletin</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/12.jpg" alt="img12"><h4>Con ruedas</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/13.jpg" alt="img13"><h4>Carteras grandes</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/14.jpg" alt="img14"><h4>Para laptop</h4></a></li>
+						<li><a href="#"><img src="<?=$IMG?>/15.jpg" alt="img15"><h4>maletin</h4></a></li>
 					</ul>
 					<nav>
 						<a href="#">Zapatos</a>
@@ -119,7 +121,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 			</div>
 		</div><!-- /container -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-		<script src="js/jquery.catslider.js"></script>
+		<script src="<?=$JS?>/jquery.catslider.js"></script>
 		<script>
 			$(function() {
 

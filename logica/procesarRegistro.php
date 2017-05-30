@@ -1,7 +1,8 @@
 <?php
-
-require_once('../clases/persona.class.php');
-require_once('/funciones.php');
+require_once($CLASES_DIR .'persona.class.php');
+require_once($LOGICA_DIR .'funciones.php');
+#require_once('../clases/persona.class.php');
+#require_once('/funciones.php');
 
 $nombre = strip_tags($_POST['Nombre']);
 $apellido = strip_tags($_POST['Apellido']);
@@ -32,7 +33,7 @@ $p->altaPersona($conex);
 
 ?>
 	 <script type="text/javascript">
-		location.href="../index.php";
+		location.href="../presentacion/index.php";
 	</script>
 <?php
 

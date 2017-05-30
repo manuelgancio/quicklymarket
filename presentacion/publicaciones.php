@@ -1,6 +1,8 @@
 <?php
-require_once('../clases/articulo.class.php');
-require_once('../logica/funciones.php');
+require_once($CLASES_DIR .'articulo.class.php');
+require_once($LOGICA_DIR .'funciones.php');
+#require_once('../clases/articulo.class.php');
+#require_once('../logica/funciones.php');
 ?>
 <?php
 session_start();
@@ -20,8 +22,8 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 		<meta name="keywords" content="jquery plugin, item slider, categories, apple slider, css animation" />
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico"> 
-		<link rel="stylesheet" type="text/css" href="../css/style.css" />
-        <script src="js/modernizr.custom.63321.js"></script>
+		<link rel="stylesheet" type="text/css" href="<?=$CSS?>/style.css" />
+        <script src="<?= $JS?>/modernizr.custom.63321.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 
@@ -31,11 +33,11 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
         <!-- Librería jQuery requerida por los plugins de JavaScript -->
         <script src="http://code.jquery.com/jquery.js"></script>
         <!-- Todos los plugins JavaScript de Bootstrap (también puedes incluir archivos JavaScript individuales de los únicos plugins que utilices) -->
-        <script src="../js/bootstrap.min.js"></script>
+        <script src="<?= $JS?>/bootstrap.min.js"></script>
         <!-- Referencia a un archivo css propio, donde se realizan las modificaciones css de la página principal -->
-        <link href="../css/starter-template.css" rel="stylesheet">
+        <link href="<?= $CSS?>/starter-template.css" rel="stylesheet">
         <!-- Nueva librería de jQuery personalizada para interactuar con los elementos de nuestro documento -->
-        <script src="../js/jquery-example.js"></script>
+        <script src="<?= $JS?>/jquery-example.js"></script>
     </head>
 	
 		<div class="container">	
@@ -47,9 +49,9 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 				</div>
 				<div>
                 <ol class="breadcrumb">
-                    <li><a href='../index.php'> Inicio </a></li>
-                    <li><a href='perfil.php'> Perfil</a></li>
-                    <li><a href='#'> Publicaciones </a></li>
+                    <li><a href='<?=$PRESENTACION?>/index.php'> Inicio </a></li>
+                    <li><a href='<?=$PRESENTACION?>/perfil.php'> Perfil</a></li>
+                    <li><a href='<?=$PRESENTACION?>/publicaciones.php'> Publicaciones </a></li>
                 </ol>
                 </div>
 			<?php
@@ -57,10 +59,10 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 				{
 					?>
 					<div>
-					<a href='presentacion/perfil.php'>Perfil</a>
+					<a href='<?=$PRESENTACION?>/perfil.php'>Perfil</a>
 					</div>
 					<div>
-					<a href='presentacion/cerrarSesion.php'>Log out</a>
+					<a href='<?=$PRESENTACION?>/cerrarSesion.php'>Log out</a>
 					</div>
 
 					<?php
