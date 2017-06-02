@@ -56,7 +56,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 							
 						<tr>
 							<th>
-								<a href='<?= $PRESENTACION?>/registro.php'>¿No estás registrado?</a>
+                <a href='<?= $PRESENTACION?>/registro.php'>¿No estás registrado?</a>
 							</th>
 						<tr>
 					</table>
@@ -74,7 +74,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
             <li ><a href="<?= $PRESENTACION?>/index.php">Inicio</a></li>
             <li><a href="<?= $PRESENTACION?>/perfil.php">Perfil</a></li>
             <li><a href="<?= $PRESENTACION?>/publicaciones.php">Mis Publicaciones</a></li>
-            <li><a href="#">Vender</a></li>
+            <li><a href="<?= $PRESENTACION?>/publicarArticulo.php">Vender</a></li>
             <li><a href="<?= $PRESENTACION?>/cerrarSesion.php">Log out</a></li>
           </ul>
         </nav>
@@ -115,12 +115,8 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
       </div>
       -->
 
-      <!-- Site footer -->
-      <!--
-      <footer class="footer">
-        <p>&copy; 2016 Company, Inc.</p>
-      </footer>
+     
 
-    </div> <!-- /container -->
+  <!--  </div> <!-- /container -->
 
   

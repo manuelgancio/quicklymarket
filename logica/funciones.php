@@ -46,3 +46,20 @@ function elegirIdUsuario(){
 
     return($newId);
 }
+
+function comprobarCorreo($correo){
+    $conex= conectar();
+
+    $sql ="SELECT correo FROM `usuario` WHERE (`correo` = :correo)" ;
+
+    $consulta = $conex->prepare($sql);
+
+    $consulta->execute(array(":correo" => $correo));
+    //$result = $consulta->fetchAll();
+    //return $result;
+    if($consulta->rowCount() > 0){
+        return false;
+    }else{
+        return true;
+    }
+}
