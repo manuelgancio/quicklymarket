@@ -58,12 +58,13 @@ class PersistenciaPersona
     }
 }
 
-//Devuelve true si el login coincide con la password
+//Devuelve true si el login coincide con la password NO SE USA
    public function verificarLoginPassword($obj, $conex)
    {
         //Obtiene los datos del objeto $obj
         $correo= trim($obj->getCorreo());
-        $pass= trim($obj->getPassword());
+        $pass=trim($obj->getPassword());
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
 
         $sql = "select * from usuario where correo=:correo and pass_u=:pass";
 		

@@ -1,9 +1,11 @@
-﻿<?php
+<?php
 //session_start();
 if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 	echo "Bienvenido! " . $_SESSION['Correo'];	
 }
 require_once($PRESENTACION_DIR .'header.php');
+require_once($CLASES_DIR .'articulo.class.php');
+require_once($LOGICA_DIR .'funciones.php');
 ?>
 
 
@@ -19,11 +21,15 @@ require_once($PRESENTACION_DIR .'header.php');
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico"> 
 		<link rel="stylesheet" type="text/css" href="<?= $CSS ?>style.css"/>
+        <link rel="stylesheet" type="text/css" href="<?= $CSS ?>bootstrap.min.css"/>
 		<script src="<?= $JS?>modernizr.custom.63321.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 	</head>
 	<body>
+
+
+    
 		<div class="main">
 			<div align="center" id="busquedaInicial">
 				<form action='<?= $LOGICA?>/procesarBusqueda.php' name='buscarForm' id='buscarForm' method='POST'> 
@@ -31,7 +37,9 @@ require_once($PRESENTACION_DIR .'header.php');
 					<input class"w3-input" type="submit" name='btnBuscar' value='BUSCAR'>
 				</form>
 			</div>
-			<div id="mi-slider" class="mi-slider">
+    
+
+  			<div id="mi-slider" class="mi-slider">
 				<ul>
 					<li><a href="#"><img src="<?=$IMG?>/1.jpg" alt="img01"><h4>Botas</h4></a></li>
 					<li><a href="#"><img src="<?=$IMG?>/2.jpg" alt="img02"><h4>zapatos</h4></a></li>

@@ -22,7 +22,7 @@ function desconectar(){
 
 function elegirIdPersona(){
     $conex = conectar();
-    $sql='SELECT max(Id_P) as Id_P from Persona';
+    $sql='SELECT max(Id_P) as Id_P from persona';
 
     foreach ($conex->query($sql) as $row) {
        // print $row['Id_P'] ;
@@ -49,14 +49,11 @@ function elegirIdUsuario(){
 
 function comprobarCorreo($correo){
     $conex= conectar();
-
     $sql ="SELECT correo FROM `usuario` WHERE (`correo` = :correo)" ;
 
     $consulta = $conex->prepare($sql);
-
     $consulta->execute(array(":correo" => $correo));
-    //$result = $consulta->fetchAll();
-    //return $result;
+
     if($consulta->rowCount() > 0){
         return false;
     }else{

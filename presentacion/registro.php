@@ -3,7 +3,7 @@
     <head>
     <link href='<?= $CSS?>/bootstrap.min.css' rel="stylesheet">
     <link href='<?= $CSS?>/registro.css' rel="stylesheet">
-    <script src="<?= $JS?>registro.js"></script>
+    <script src="<?= $JS?>validar.js"></script>
     </head>
     <body>
     <div class="container">
@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label for="Correo"><span class="req">* </span> Correo: </label> 
-                    <input class="form-control" required type="text" name="Correo" id = "Correo"  onchange="email_validate(this.value);" />   
+                    <input class="form-control" required type="email" name="Correo" id = "Correo"  pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" onchange="email_validate(this.value);" />   
                         <div class="status" id="status"></div>
             </div>
 
@@ -110,7 +110,12 @@
             </div>
 -->
             <div class="form-group">
-                <input class="btn btn-success" type="submit" name="submit_reg" id="submit_reg" value="Registrarse" disabled="disabled">
+                <div class="row">
+                <div class="col-md-6">
+                    <input class="btn btn-success" type="submit" name="submit_reg" id="submit_reg" value="Registrarse" disabled="disabled">
+                    <a href="<?= $PRESENTACION?>/index.php" class="btn btn-primary">Inicio</a>
+                </div>
+                </div>
             </div>
                     <!--  <h5>You will receive an email to complete the registration and validation process. </h5>
                       <h5>Be sure to check your spam folders. </h5>

@@ -1,5 +1,4 @@
 <?php
-//require_once('../persistencia/PersistenciaPersona.class.php');
 require_once($PERSISTENCIA_DIR .'PersistenciaPersona.class.php');
 class Persona
 {
@@ -136,7 +135,40 @@ public function getTcredito(){
 }
 
 //Mas metodos
+public function login($conex){
 
+    $correo=$this->getCorreo();
+    $pass=$this->getPassword();
+    //Verifico que el correo este en la base
+    $sql="SELECT * FROM usuario where correo =:correo";
+
+        $result = $conex->prepare($sql);
+        $result->execute(array('correo'=>$correo));
+
+        $resultado = $result->fetchALL();
+        if (empty($resultado)){
+            $correoOk = false;
+            return false;
+        }else{
+            $correoOk = true;
+            //Si el correo esta bien traigo la password hasheada de la base    }
+            $sql="SELECT pass_u FROM usuario WHERE correo=:correo";
+            $result = $conex->prepare($sql);
+            $result->execute(array('correo'=>$correo));
+            $resultado = $result->fetchALL();
+            $pass_hash =$resultado[0]['pass_u'];
+            /** $pass es la password ingresada en el login sin hashear
+                $pass_hash es la password hasheada traida de la BD
+            **/
+            if (password_verify($pass, $pass_hash)) {
+                // las password coinciden, login correcto
+                return true;
+            }else{
+                // Passwords no coinciden
+                return false;
+            }
+        }
+}
 public function altaPersona($conex){
     $pp=new PersistenciaPersona;
     return ($pp->agregarPersona($this, $conex));
@@ -165,16 +197,9 @@ public function verVentasRealizadas(){
 public function verPublicaciones(){
 
 }
-public function login(){
 
-}
 public function logout(){
 
 }
-public function coincideLoginPassword($conex){
-    $pu= new PersistenciaPersona;
-    return $pu->verificarLoginPassword($this, $conex);   
-}
-
 
 }

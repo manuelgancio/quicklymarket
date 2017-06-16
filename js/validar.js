@@ -1,16 +1,74 @@
+function validarformArticulo(){
+    
+    error =''
+    nombre = document.getElementById("nombre").value;
+    desc = document.getElementById("nombre").value;
+    cat = document.getElementById("categoria").selectedIndex;
+    precio = document.getElementById("precio").value;
+    estado = document.getElementsByName("estado");
+    cant = document.getElementById("stock").value;
+
+    // RADIO BUTTON ESTADO
+    var seleccionado = false;
+        for(var i=0; i<estado.length; i++) {    
+            if(estado[i].checked) {
+                seleccionado = true;
+                break;
+            }
+        }
+
+    if( nombre == null || nombre.length == 0 || /^\s+$/.test(nombre) ) {
+        document.getElementById("error_msg_nom").innerHTML = "<span class='warning'>El nombre no puede estar vacío.</span>";
+        return false;
+    }
+    else if (desc == null || desc.length == 0 || /^\s+$/.test(desc)){
+        document.getElementById("error_msg_desc").innerHTML = "<span class='warning'>La descripcioón no puede estar vacía.</span>";
+        return false;
+    }
+    else if( cat == null || cat == 0 ) {
+        document.getElementById("error_msg_cat").innerHTML = "<span class='warning'>Debe seleccionar una categoria.</span>";
+        return false;
+    }
+    else if (precio == null || precio.length == 0 || /^\s+$/.test(precio)){
+        document.getElementById('error_msg_precio').innerHTML = "<span class='warning'>El precio no puede estar vacío.</span>";
+        return false;
+    }
+    else if (seleccionado == false){
+        document.getElementById("error_msg_estado").innerHTML = "<span class='warning'>Debe seleccionar un estado.</span>";
+        return false;
+    }
+    else if(isNaN(precio) ){
+        document.getElementById("error_msg_precio").innerHTML = "<span class='warning'>El precio debe ser un número.</span>";
+        return false;
+    }
+    else if (cant == null || cant.length == 0 || /^\s+$/.test(cant)){
+        document.getElementById("error_msg_cant").innerHTML = "<span class='warning'>La cantidad no puede estar vacía.</span>";
+        return false;
+    }
+    else if(isNaN(cant)) {
+        document.getElementById("error_msg_cant").innerHTML = "<span class='warning'>La cantidad debe ser un número.</span>";
+        return false;
+    }
+    // Si el script ha llegado a este punto, todas las condiciones
+    // se han cumplido, por lo que se devuelve el valor true
+    return true;
+}
+
+
+
 function checkPass()
 {
     var pass1 = document.getElementById('pass1');
     var pass2 = document.getElementById('pass2');
     
-    //if (this.pass1.value != "" && this.pass1.value == this.pass2.value) {
- //r.innerHTML = this.match_html;
- // $("#submit_reg").removeAttr("disabled");
+     //if (this.pass1.value != "" && this.pass1.value == this.pass2.value) {
+    //r.innerHTML = this.match_html;
+    // $("#submit_reg").removeAttr("disabled");
 
-//} else {
- //r.innerHTML = this.nomatch_html;
-  //$("#submit_reg").attr("disabled", "disabled");
-//}
+    //} else {
+    //r.innerHTML = this.nomatch_html;
+    //$("#submit_reg").attr("disabled", "disabled");
+    //}
 
 
     //Store the password field objects into variables ...
@@ -39,8 +97,6 @@ function checkPass()
         message.style.color = badColor;
         message.innerHTML = "Las contraseñas no coinciden!"
         document.getElementById("submit_reg").disabled = true;
-
-
     }
 } 
 function validatephone(phone) 

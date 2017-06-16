@@ -42,15 +42,15 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
         <form action="<?= $LOGICA?>/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
 				<table >
 						<tr>
-							<th><input type="text" name="Correo" id="Correo" placeholder="Ingrese su correo"> </th>
+							<th><input class="form-group" type="text" name="Correo" id="Correo" placeholder="Ingrese su correo" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"> </th>
 						</tr>
 						<tr>
-							<th><input type="Password" name="Password" id="Password" placeholder="contraseña"></th>
+							<th><input class="form-group" type="Password" name="Password" id="Password" placeholder="contraseña"></th>
 						</tr> 
 						<tr>
 						<th>
 						
-							<input  class="button button4" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />
+							<input  class="btn btn-success" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />
 						<th>
 						<tr>
 							
@@ -70,7 +70,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
         <!--BARRA DE NAVEGACION-->
         <div class="masthead">
         <nav>
-          <ul class="nav nav-justified">
+          <ul class="nav nav-justified" >
             <li ><a href="<?= $PRESENTACION?>/index.php">Inicio</a></li>
             <li><a href="<?= $PRESENTACION?>/perfil.php">Perfil</a></li>
             <li><a href="<?= $PRESENTACION?>/publicaciones.php">Mis Publicaciones</a></li>

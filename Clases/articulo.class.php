@@ -6,19 +6,17 @@ class articulo
     private $nombre;
     private $descripcion;
     private $categoria;
-    private $tipo; //boolean (venta o permuta) true= venta false=permuta
     private $precio;
-    private $estado; //boolean (nuevo/usado) true= nuevo false= usado
+    private $estado; 
     private $stock; 
     private $img;
 
 
-function __construct($id='',$nombre='',$descripcion='',$categoria='',$tipo='',$precio='',$estado='',$stock='',$img=''){
+function __construct($id='',$nombre='',$descripcion='',$categoria='',$precio='',$estado='',$stock='',$img=''){
     $this->id=$id;
     $this->nombre=$nombre;
     $this->descripcion=$descripcion;
     $this->categoria=$categoria;
-    $this->tipo=$tipo;
     $this->precio=$precio;
     $this->estado=$estado;
     $this->stock=$stock;
@@ -39,14 +37,17 @@ public function setDescripcion($descripcion){
 public function setCategoria($categoria){
     $this->categoria=$categoria;
 }
-public function setTipo($tipo){
-    $this->tipo=$tipo;
-}
 public function setEstado($estado){
     $this->estado=$estado;
 }
 public function setStock($stock){
     $this->stock=$stock;
+}
+public function setPrecio($precio){
+    $this->precio=$precio;
+}
+public function setImg($img){
+    $this->img=$img;
 }
 
 //Metodos Get 
@@ -63,23 +64,60 @@ public function getDescripcion(){
 public function getCategoria(){
     return $this->categoria;
 }
-public function getTipo(){
-    return $this->tipo;
-}
 public function getEstado(){
     return $this->estado;
 }
 public function getStock(){
     return $this->stock;
 }
-
+public function getPrecio(){
+    return $this->precio;
+}
+public function getImg(){
+    return $this->img;
+}
 //Otros metodos
 
-public function publicarArticulo(){
+public function altaArticulo($conex){
 
+    $nombre=$this->getNombre();
+    $descripcion=$this->getDescripcion();
+    $categoria = $this->getCategoria();
+    $precio=$this->getPrecio();
+    $estado=$this->getEstado();
+    $stock=$this->getStock();
+    $img=$this->getImg();
+
+
+    $sql= "INSERT INTO `articulo`(`nom_a`, `precio`, `estado`, `stock`,`descripcion`,`imagen`,`id_cat`) VALUES (:nombre,
+    :precio, :estado, :stock, :descripcion,:img, :categoria)";
+
+    $result = $conex->prepare($sql);
+    $result->execute(array(':nombre'=>$nombre, ':precio'=>$precio,':estado'=>$estado,':stock'=>$stock,'descripcion'=>$descripcion,
+    'img'=>$img, 'categoria'=>$categoria));
+    
+   
+    //Para saber si hay error
+        if($result){
+            return(true);
+        }             
+        else{
+            return(false);
+        }
+}
+
+public function listarCategorias($conex){
+
+    $sql="SELECT id_cat, nomb_cat from categoria";
+
+    $result = $conex->prepare($sql);
+    $result->execute();
+
+    $resultado = $result->fetchALL();
+
+    return $resultado;
 }
 public function modificarArticulo(){
-
 }
 public function bajaArticulo(){
 

@@ -15,12 +15,19 @@ if(isset($_POST['submit_reg'])){
     $password = strip_tags($_POST['Password']);
     $t_cretido = strip_tags($_POST['T_credito']);
 
-
+// Valida que el correo no este ingresado en la base de datos 
    if (comprobarCorreo($correo) == false){
-        ?><p>This email has already been registered.</p>
-          <p>Please choose a new email.
-          <a class="btn btn-default" href='#' onclick='history.go(-1)'>Go Back</a></p><?php
+        ?>
+            <script type="text/javascript">
+                window.alert('El correo ya está registrado');
+                location.href="../presentacion/index.php";
+            </script>
+        <?php
+
    }else {
+        //hashear la password
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
         //funcion elegir id 
         $id_P = elegirIdPersona();
         $id_U = elegirIdUsuario();
