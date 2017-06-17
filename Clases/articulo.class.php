@@ -10,9 +10,10 @@ class articulo
     private $estado; 
     private $stock; 
     private $img;
+    private $id_usu;
 
 
-function __construct($id='',$nombre='',$descripcion='',$categoria='',$precio='',$estado='',$stock='',$img=''){
+function __construct($id='',$nombre='',$descripcion='',$categoria='',$precio='',$estado='',$stock='',$img='',$id_usu=''){
     $this->id=$id;
     $this->nombre=$nombre;
     $this->descripcion=$descripcion;
@@ -21,6 +22,7 @@ function __construct($id='',$nombre='',$descripcion='',$categoria='',$precio='',
     $this->estado=$estado;
     $this->stock=$stock;
     $this->img=$img;
+    $this->id_usu=$id_usu;
 }
 
 // Metodos SET
@@ -49,6 +51,9 @@ public function setPrecio($precio){
 public function setImg($img){
     $this->img=$img;
 }
+public function setIdUsu($id_usu){
+    $this->id_usu=$id_usu;
+}
 
 //Metodos Get 
 
@@ -76,6 +81,9 @@ public function getPrecio(){
 public function getImg(){
     return $this->img;
 }
+public function getIdUsu(){
+    return $this->id_usu;
+}
 //Otros metodos
 
 public function altaArticulo($conex){
@@ -87,14 +95,15 @@ public function altaArticulo($conex){
     $estado=$this->getEstado();
     $stock=$this->getStock();
     $img=$this->getImg();
+    $id_usu=$this->getIdUsu();
 
 
-    $sql= "INSERT INTO `articulo`(`nom_a`, `precio`, `estado`, `stock`,`descripcion`,`imagen`,`id_cat`) VALUES (:nombre,
-    :precio, :estado, :stock, :descripcion,:img, :categoria)";
+    $sql= "INSERT INTO `articulo`(`nom_a`, `precio`, `estado`, `stock`,`descripcion`,`imagen`,`id_cat`,`id_u`) VALUES (:nombre,
+    :precio, :estado, :stock, :descripcion,:img, :categoria, :id_usu)";
 
     $result = $conex->prepare($sql);
     $result->execute(array(':nombre'=>$nombre, ':precio'=>$precio,':estado'=>$estado,':stock'=>$stock,'descripcion'=>$descripcion,
-    'img'=>$img, 'categoria'=>$categoria));
+    'img'=>$img, 'categoria'=>$categoria,'id_usu'=>$id_usu));
     
    
     //Para saber si hay error

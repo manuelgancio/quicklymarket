@@ -60,3 +60,15 @@ function comprobarCorreo($correo){
         return true;
     }
 }
+
+function obtenerIdPersona($correo){
+    $conex =conectar();
+    $sql ="SELECT id_u FROM usuario WHERE (`correo` = :correo)";
+
+    $consulta = $conex->prepare($sql);
+    $consulta->execute(array(":correo"=>$correo));
+
+    $resultado = $consulta->fetchALL();
+
+    return $resultado;
+}

@@ -39,6 +39,12 @@ if(isset($_POST["btnAltaArticulo"])) {
     }
 }
 
+    //Obtengo el id del usuario que sube el archivo
+    $correo = $_SESSION['Correo'];
+    $id_usu = obtenerIdPersona($correo);
+    $id_usu = $id_usu[0]['id_u'];
+   
+
     //Obtengo los datos de la publicacion
 
     $tipo_publicacion = strip_tags($_POST["tipo"]); 
@@ -55,7 +61,7 @@ if(isset($_POST["btnAltaArticulo"])) {
 
 //Creo el objeto con los datos ingresados
     $a = new articulo('',$nomArt,$desc,$cat,$precio,
-    $estado,$cant,$ruta_img);
+    $estado,$cant,$ruta_img,$id_usu);
 
     $a->altaArticulo($conex);
 
