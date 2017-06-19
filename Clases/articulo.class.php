@@ -104,15 +104,13 @@ public function altaArticulo($conex){
     $result = $conex->prepare($sql);
     $result->execute(array(':nombre'=>$nombre, ':precio'=>$precio,':estado'=>$estado,':stock'=>$stock,'descripcion'=>$descripcion,
     'img'=>$img, 'categoria'=>$categoria,'id_usu'=>$id_usu));
+
+    //Guardo el id del articolo, luego se inserta en la tabla publicaciones como clave foranea
+    $id_articulo = $conex->lastInsertId();
     
-   
-    //Para saber si hay error
-        if($result){
-            return(true);
-        }             
-        else{
-            return(false);
-        }
+
+    return($id_articulo);
+    
 }
 
 public function listarCategorias($conex){
@@ -120,7 +118,7 @@ public function listarCategorias($conex){
     $sql="SELECT id_cat, nomb_cat from categoria";
 
     $result = $conex->prepare($sql);
-    $result->execute();
+    $result->execute(); 
 
     $resultado = $result->fetchALL();
 

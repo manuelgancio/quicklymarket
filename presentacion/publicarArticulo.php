@@ -18,8 +18,10 @@ require_once($PRESENTACION_DIR . 'header.php');
            
         <script src="<?= $JS?>publicarForm.js"></script>
         <script src="<?= $JS?>validar.js"></script>
+        <script src="<?= $JS?>numericSpinner.js"></script>
         <link rel="stylesheet" type="text/css" href="<?= $CSS ?>publicarForm.css"/>	
         <link rel="stylesheet" type="text/css" href="<?= $CSS ?>bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="<?= $CSS ?>numericSpinner.css"/>
 	    	
     </head>
 <body>
@@ -126,8 +128,6 @@ require_once($PRESENTACION_DIR . 'header.php');
                         </div>
                         </div>
                         <ul class="list-inline pull-right">
-                            <!--<li><button type="submit" id="btnAltaArticulo" name="btnAltaArticulo"  onclick="habilitarSiguiente()" class="btn btn-primary">Guardar</button></li>
-                            -->
                             <li><button type="button"  id="btnSiguiente" class="btn btn-primary next-step" >Siguiente</button></li>
                         </ul>   
                     </div>
@@ -141,15 +141,11 @@ require_once($PRESENTACION_DIR . 'header.php');
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Anterior</button></li>
                             <li><button type="button" class="btn btn-primary next-step">Siguiente</button></li>
-                        <!--<li><button type="submit" id="btnAltaArticulo" name="btnAltaArticulo"  onclick="habilitarSiguiente()" class="btn btn-primary next-step">Guardar y Continuar</button></li>-->
-                        <!--</form>-->
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
                         <h3>Datos de la publicación</h3>
                         <p>Usando QuicklyMarket usted puede elegir entre vender o permutar su producto.</p>
-
-                        <!--<form action="<?= $LOGICA?>/procesarArticulo.php" method='POST' id='AltaPublicacion' role="form" enctype="multipart/form-data">-->
                         <div class="row">
                             <div class="col-md-6">
                                     <label for="tipo" >Tipo</label>
@@ -169,14 +165,25 @@ require_once($PRESENTACION_DIR . 'header.php');
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                            <label for="duracion"> Duración de la publicación </label>
-                            <select name="duracion" id="duracion" class="dropselectsec">
+                            <div class="col-md-6">                            
+                            <label for="duracion"> Duración de la publicación: (1 a 60 días) </label>
+                            </div>
+                          <!--  <select name="duracion" id="duracion" class="dropselectsec">
                                 <option value='15'> 15 Días </option> 
                                 <option value='30'> 30 Días </option>
                                 <option value='45'> 45 Días </option>
                                 <option value='60'> 60 Días </option> 
-                            </select>
+                            </select>-->
+                            </div>
+                            <div class ="row">
+                            <div class="col-md-1">
+                            <div class="input-group spinner">
+                                <input type="text" class="form-control" id="duracion" name="duracion" value="1" min="1" max="60">
+                                <div class="input-group-btn-vertical">
+                                <button class="btn btn-default" type="button"><i class="fa fa-caret-up"></i></button>
+                                <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
+                                </div>
+                            </div>
                             <div id="error_msg_duracion"></div>
                             </div>
                         </div>

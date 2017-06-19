@@ -1,13 +1,13 @@
 <?php
 
-class art_pub  //publicacionn
+class art_pub  //publicacion
 {
     private $id;
     private $id_art;
     private $id_usu;
     private $fecha_inicio;
     private $fecha_fin;
-    private $tipo_venta; //boolean (venta o permuta)
+    private $tipo_venta; //boolean (venta o permuta) 1 = venta 0= permuta
     private $estado_venta; //en curso o finalizada// NO ESTA EN LA BASE 
     private $comentarios;//NO ESTA EN LA BASE
 
@@ -81,11 +81,25 @@ public function getComentarios(){
 public function altaPublicacion($conex){
     $id_art=$this->getIdArt();
     $id_usu=$this->getIdUsu();
-    $fecha_inicio->getFechaInicio();
-    $fecha_fin->getFechaFin();
-    $tipo->getTipoVenta();
-    
+    $fecha_inicio=$this->getFechaInicio();
+    $fecha_fin=$this->getFechaFin();
+    $tipo=$this->getTipoVenta();
 
+
+    $sql = "INSERT INTO `publica` (`fecha_in`,`fecha_fin`,`tipo`,`id_u`,`id_a`)
+    VALUES (:fecha_inicio, :fecha_fin, :tipo, :id_usu, :id_art)";
+
+    $result = $conex->prepare($sql);
+    $result->execute(array(':fecha_inicio'=>$fecha_inicio, ':fecha_fin'=>$fecha_fin,':tipo'=>$tipo
+    , ':id_usu'=>$id_usu, ':id_art'=>$id_art));
+
+    // Guardo el id de la publicacion luego de insertar para redirigir a la publicacion finalizada
+    $id_publicacion = $conex->lastInsertId();
+
+    return ($id_publicacion);
+}
+public function listarPublicacion(){
+    
 }
 public function modificarPublicacion(){
 

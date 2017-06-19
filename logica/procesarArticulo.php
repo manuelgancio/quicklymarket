@@ -47,26 +47,35 @@ if(isset($_POST["btnAltaArticulo"])) {
 
     //Obtengo los datos de la publicacion
 
-    $tipo_publicacion = strip_tags($_POST["tipo"]); 
-    $fecha_inicio = strip_tags($_POST['fecha_inicio']);//1= venta /0 = permuta
-    $duracion = strip_tags($_POST['duracion']);
+    $tipo_publicacion = strip_tags($_POST["tipo"]); //1= venta /0 = permuta
+    $fecha_inicio = strip_tags($_POST['fecha_inicio']); //dd-mm-yy
+    $duracion = strip_tags($_POST['duracion']); // cantidad de días que dura la publicacion
 
+    // Convertir fomato dd-mm-yy a yy-mm-dd
+    $fecha_inicio = date("Y-m-d", strtotime($fecha_inicio));
     
-  
-
+    // Calcular fecha finalizacion. Fecha comienzo + duracion 
+    $fecha_fin = strtotime ( '+'.$duracion.'day' , strtotime ($fecha_inicio)) ;
+    $fecha_fin = date('Y-m-d' ,$fecha_fin);
+ 
 //Validacion de datos(PENDIENTE)
 
 //Conecto a la bd
     $conex = conectar();
 
 //Creo el objeto con los datos ingresados
-    $a = new articulo('',$nomArt,$desc,$cat,$precio,
-    $estado,$cant,$ruta_img,$id_usu);
+    $a = new articulo('',$nomArt,$desc,$cat,$precio,$estado,$cant,$ruta_img,$id_usu);
 
-    $a->altaArticulo($conex);
-
+    $b=$a->altaArticulo($conex);
+    //Guardo el id del articulo ingresado para usarlo como foreign key de la publicacion 
+    $id_articulo_ingresado = $b;
     
+    //Creo el objeto publicacion    
+    $p = new art_pub('',$id_articulo_ingresado,$id_usu,$fecha_inicio,$fecha_fin,$tipo_publicacion);
 
+    $q = $p->altaPublicacion($conex);
+    //Guardo id publicacion para redireccionar a la publicacion creada
+    $id_publicacion_creada = $q;
   
     header('Location:'. $PRESENTACION_DIR . 'publicarArticulo.php');
     desconectar($conex);
