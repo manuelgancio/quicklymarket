@@ -132,7 +132,17 @@ public function bajaArticulo(){
 public function comprarArticulo(){
 
 }
-public function listarArticulos(){
+public function listarArticulo($conex){
+    //devuelve articulo segun su id
+    $id = $this->getId();
+
+    $sql = "SELECT `nom_a`, `precio`, `estado`, `stock`, `imagen`, `id_cat`, `descripcion` FROM `articulo` WHERE `id_a` = :id_art";
+
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id_art'=>$id));
+    $result = $result->fetchALL();
+    
+    return ($result);
 
 }
 public function comentarArticulo(){

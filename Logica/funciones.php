@@ -72,3 +72,5 @@ function obtenerIdPersona($correo){
 
     return $resultado;
 }
+
+

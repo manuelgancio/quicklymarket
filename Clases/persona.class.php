@@ -183,7 +183,6 @@ public function registro(){
 
 }
 public function verPerfil(){
-
 }
 public function modificarPerfil(){
 

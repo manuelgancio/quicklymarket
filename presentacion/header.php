@@ -71,9 +71,9 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
         <div class="masthead">
         <nav>
           <ul class="nav nav-justified" >
-            <li ><a href="<?= $PRESENTACION?>/index.php">Inicio</a></li>
+            <li><a href="<?= $PRESENTACION?>/index.php">Inicio</a></li>
             <li><a href="<?= $PRESENTACION?>/perfil.php">Perfil</a></li>
-            <li><a href="<?= $PRESENTACION?>/publicaciones.php">Mis Publicaciones</a></li>
+            <li><a href="<?= $PRESENTACION?>/publicaciones.php">Publicaciones</a></li>
             <li><a href="<?= $PRESENTACION?>/publicarArticulo.php">Vender</a></li>
             <li><a href="<?= $PRESENTACION?>/cerrarSesion.php">Log out</a></li>
           </ul>

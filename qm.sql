@@ -335,18 +335,19 @@ DROP TABLE IF EXISTS `publica`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `publica` (
-  `id_pub` int(11) NOT NULL DEFAULT '0',
+  `id_pub` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_in` date DEFAULT NULL,
   `fecha_fin` date DEFAULT NULL,
   `tipo` bit(1) DEFAULT NULL,
   `id_u` int(11) DEFAULT NULL,
   `id_a` int(11) DEFAULT NULL,
+  `e_pub` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id_pub`),
   KEY `id_u` (`id_u`),
   KEY `id_a` (`id_a`),
   CONSTRAINT `publica_ibfk_1` FOREIGN KEY (`id_u`) REFERENCES `usuario` (`id_u`),
   CONSTRAINT `publica_ibfk_2` FOREIGN KEY (`id_a`) REFERENCES `articulo` (`id_a`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -355,7 +356,7 @@ CREATE TABLE `publica` (
 
 LOCK TABLES `publica` WRITE;
 /*!40000 ALTER TABLE `publica` DISABLE KEYS */;
-INSERT INTO `publica` VALUES (1,'2017-05-30','2017-07-30','\0',1,18),(2,'2017-05-30','2017-06-30','',1,16),(3,'2017-05-30','2017-06-30','',1,1),(4,'2017-05-30','2017-06-30','',3,9);
+INSERT INTO `publica` VALUES (1,'2017-05-30','2017-07-30','\0',1,18,NULL),(2,'2017-05-30','2017-06-30','',1,16,NULL),(3,'2017-05-30','2017-06-30','',1,1,NULL),(4,'2017-05-30','2017-06-30','',3,9,NULL);
 /*!40000 ALTER TABLE `publica` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -459,6 +460,7 @@ CREATE TABLE `usuario` (
   `fecha_ins` date DEFAULT NULL,
   `id_p` int(11) DEFAULT NULL,
   `ntraj` int(11) DEFAULT NULL,
+  `act_u` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id_u`),
   KEY `id_p` (`id_p`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_p`) REFERENCES `persona` (`id_p`)
@@ -471,7 +473,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'jcvd@123.com','******','s',0,'Montevideo','Montevideo','2017-05-27',4,NULL),(2,'sseagal@yahoo.com','******','p',0,'Montevideo','Montevideo','2017-06-08',5,NULL),(3,'mick@rocky.com','******','p',0,'Montevideo','Montevideo','2017-06-01',6,NULL);
+INSERT INTO `usuario` VALUES (1,'jcvd@123.com','******','s',0,'Montevideo','Montevideo','2017-05-27',4,NULL,NULL),(2,'sseagal@yahoo.com','******','p',0,'Montevideo','Montevideo','2017-06-08',5,NULL,NULL),(3,'mick@rocky.com','******','p',0,'Montevideo','Montevideo','2017-06-01',6,NULL,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -484,4 +486,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-18 13:15:45
+-- Dump completed on 2017-06-21  9:35:04
