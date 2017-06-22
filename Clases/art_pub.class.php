@@ -98,7 +98,19 @@ public function altaPublicacion($conex){
 
     return ($id_publicacion);
 }
-public function listarPublicacion(){
+public function listarPublicacion($conex){
+/** FUNCION PARA LISTAR UNA PUBLICACION EN PARTICULAR 
+    A PARTIR DE SU ID
+**/
+    $id_pub =$this->getId();
+
+    $sql="SELECT * FROM `publica` WHERE `id_pub` =:id";
+
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id'=>$id_pub));
+    $result = $result->fetchALL();
+
+    return ($result);
 
 }
 public function modificarPublicacion(){
@@ -108,7 +120,8 @@ public function bajaPublicacion(){
 
 }
 public function listarPublicaciones($conex){
-    //obtengo el id usuario para buscar todas las publicaciones de este usuario
+/** LISTO TODAS LAS PUBLICACIONES DE UN USUARIO SEGUN SU ID
+**/
     $id_usu=$this->getIdUsu();
     // Consulta
     $sql= "SELECT `fecha_in`,`fecha_fin`,`tipo`,`id_a`,`id_pub` FROM `publica` WHERE `id_u` = :id_usu";

@@ -23,19 +23,19 @@ if(isset($_POST["btnAltaArticulo"])){
     if(isset($_POST["btnAltaArticulo"])) {
         $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
         if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
+            //echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
         } else {
-            echo "File is not an image.";
+            //echo "File is not an image.";
             $uploadOk = 0;
         }
         if ($uploadOk == 1){
             (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file));
             //Obtengo la ruta a la imagen en una variable para guardar en la base
             $ruta_img =strtolower($target_file);
-            echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         }else{   
-            echo "No se guardo.";
+           //echo "No se guardo.";
         }
     }
 
@@ -76,9 +76,9 @@ if(isset($_POST["btnAltaArticulo"])){
         $q = $p->altaPublicacion($conex);
         //Guardo id publicacion para redireccionar a la publicacion creada
         $id_publicacion_creada = $q;
-    
-        header('Location:'. $PRESENTACION_DIR . 'publicarArticulo.php');
+   
+        header("location: ".$PRESENTACION_DIR.'mostrarArticulo.php?id_pub='.$id_publicacion_creada.'&id_art='.$id_articulo_ingresado);
+        
         desconectar($conex);
 
 }// fin if alta articulo
-

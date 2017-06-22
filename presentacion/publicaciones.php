@@ -8,6 +8,10 @@ require_once($CLASES_DIR .'articulo.class.php');
 require_once($CLASES_DIR .'art_pub.class.php');
 require_once($LOGICA_DIR .'funciones.php');
 
+if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
+	echo "Bienvenido!! " . $_SESSION['Correo'];
+}
+require_once($PRESENTACION_DIR . 'header.php');
 ?>
 <html>
 	<head> 
@@ -18,10 +22,7 @@ require_once($LOGICA_DIR .'funciones.php');
 </meta>
 </head>
 <?php
-if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
-	echo "Bienvenido! " . $_SESSION['Correo'];
-}
-require_once($PRESENTACION_DIR . 'header.php');
+
 	// conecto a la base
 	$conex = conectar();
 	// Obtengo id del usuario
@@ -32,9 +33,11 @@ require_once($PRESENTACION_DIR . 'header.php');
 	$pp = new art_pub('','',$id_usu,'','','');
 	$pub= $pp->listarPublicaciones($conex);
 	
+	
 	for($i=0;$i<count($pub);$i++){
 		// Id art es el id del articulo de la publicacion
 		$id_art = $pub[$i]['id_a'];
+		$id_pub = $pub[$i]['id_pub'];
 		// Con el id del articulo creo el objeto articulo y llamo a la funcion listar articulo
 		$aa = new articulo ($id_art,'','','','','','','','');
 		$art = $aa->listarArticulo($conex);
@@ -65,7 +68,7 @@ require_once($PRESENTACION_DIR . 'header.php');
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7">
-				<h3><a href="#" title=""><?php echo $art[$x]['nom_a']?></a></h3>
+				<h3><a href="<?=$PRESENTACION?>/mostrarArticulo.php?id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" title=""><?php echo $art[$x]['nom_a']?></a></h3>
 				<p><?php echo $art[$x]['descripcion']?></p>	
 			</div>
 			<div class="row">

@@ -133,7 +133,9 @@ public function comprarArticulo(){
 
 }
 public function listarArticulo($conex){
-    //devuelve articulo segun su id
+/** DEVUELVE ARRAY CON LOS DATOS DEL ARTÍCULO BUSCANDO EL ART EN LA BASE CON SU ID
+**/
+
     $id = $this->getId();
 
     $sql = "SELECT `nom_a`, `precio`, `estado`, `stock`, `imagen`, `id_cat`, `descripcion` FROM `articulo` WHERE `id_a` = :id_art";
