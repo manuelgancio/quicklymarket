@@ -39,6 +39,7 @@ if(isset($_POST["btnAltaArticulo"])){
         }
     }
 
+        
         //Obtengo el id del usuario que sube el archivo
         $correo = $_SESSION['Correo'];
         $id_usu = obtenerIdPersona($correo);
@@ -57,6 +58,10 @@ if(isset($_POST["btnAltaArticulo"])){
         // Calcular fecha finalizacion. Fecha comienzo + duracion 
         $fecha_fin = strtotime ( '+'.$duracion.'day' , strtotime ($fecha_inicio)) ;
         $fecha_fin = date('Y-m-d' ,$fecha_fin);
+
+        //Pongo estado pub como 1 para saber que la publicacion está activa 
+        $estado_pub = 1; 
+
     
     //Validacion de datos(PENDIENTE)
 
@@ -71,14 +76,32 @@ if(isset($_POST["btnAltaArticulo"])){
         $id_articulo_ingresado = $b;
         
         //Creo el objeto publicacion    
-        $p = new art_pub('',$id_articulo_ingresado,$id_usu,$fecha_inicio,$fecha_fin,$tipo_publicacion);
+        $p = new art_pub('',$id_articulo_ingresado,$id_usu,$fecha_inicio,$fecha_fin,$tipo_publicacion,$estado_pub);
 
         $q = $p->altaPublicacion($conex);
         //Guardo id publicacion para redireccionar a la publicacion creada
         $id_publicacion_creada = $q;
    
-        header("location: ".$PRESENTACION_DIR.'mostrarArticulo.php?id_pub='.$id_publicacion_creada.'&id_art='.$id_articulo_ingresado);
+        
+        header('location: /presentacion/'.'mostrarArticulo.php?id_pub='.$id_publicacion_creada.'&id_art='.$id_articulo_ingresado);
         
         desconectar($conex);
 
 }// fin if alta articulo
+
+/**PROCESAR ELIMIAR PUBLICACION (CAMBIO EL ATRIBULO E_PUB DE LA PUBLICACION PA 0)
+**/
+
+    if(isset($_GET["id_pub"]) and (isset($_GET["id_art"]))){
+        $id_pub = $_GET['id_pub'];
+        $id_art =$_GET['id_art'];
+
+        $conex = conectar();
+        //Creo el objeto publicacion 
+        $p = new art_pub($id_pub,'','','','','','');
+        $pp = $p->bajaPublicacion($conex);
+
+        // Si la funcion devuelve true = update exitoso!
+
+        header('location: /presentacion/'.'publicaciones.php');
+}

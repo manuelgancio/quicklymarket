@@ -8,17 +8,17 @@ class art_pub  //publicacion
     private $fecha_inicio;
     private $fecha_fin;
     private $tipo_venta; //boolean (venta o permuta) 1 = venta 0= permuta
-    private $estado_venta; //en curso o finalizada// NO ESTA EN LA BASE 
+    private $estado_pub; //Bit - 0 = finalizada o bloqueada - 1 = En curso
     private $comentarios;//NO ESTA EN LA BASE
 
-function __construct($id='',$id_art='',$id_usu='',$fecha_inicio='',$fecha_fin='',$tipo_venta='',$estado_venta='',$comentarios=''){
+function __construct($id='',$id_art='',$id_usu='',$fecha_inicio='',$fecha_fin='',$tipo_venta='',$estado_pub='',$comentarios=''){
     $this->id=$id;
     $this->id_art=$id_art;
     $this->id_usu=$id_usu;
     $this->fecha_inicio=$fecha_inicio;
     $this->fecha_fin=$fecha_fin;
     $this->tipo_venta=$tipo_venta;
-    $this->estado_venta=$estado_venta;
+    $this->estado_pub=$estado_pub;
     $this->comentarios=$comentarios;
 }
 
@@ -42,8 +42,8 @@ public function setFechaFin($fecha_fin){
 public function setTipoVenta($tipo_venta){
     $this->tipo_venta=$tipo_venta;
 }
-public function setEstadoVenta($estado_venta){
-    $this->estado_venta=$estado_venta;
+public function setEstadoVenta($estado_pub){
+    $this->estado_pub=$estado_pub;
 }
 public function setComentarios($comentarios){
     $this->comentarios=$comentarios;
@@ -69,8 +69,8 @@ public function getFechaFin(){
 public function getTipoVenta(){
     return $this->tipo_venta;
 }
-public function getEstadoVenta(){
-    return $this->estado_venta;
+public function getEstadoPub(){
+    return $this->estado_pub;
 }
 public function getComentarios(){
     return $this->comentarios;
@@ -84,14 +84,14 @@ public function altaPublicacion($conex){
     $fecha_inicio=$this->getFechaInicio();
     $fecha_fin=$this->getFechaFin();
     $tipo=$this->getTipoVenta();
+    $estado_pub=$this->getEstadoPub();// 1- activa 0=finalizaada o bloqueada
 
-
-    $sql = "INSERT INTO `publica` (`fecha_in`,`fecha_fin`,`tipo`,`id_u`,`id_a`)
-    VALUES (:fecha_inicio, :fecha_fin, :tipo, :id_usu, :id_art)";
+    $sql = "INSERT INTO `publica` (`fecha_in`,`fecha_fin`,`tipo`,`id_u`,`id_a`,`e_pub`)
+    VALUES (:fecha_inicio, :fecha_fin, :tipo, :id_usu, :id_art,:e_pub)";
 
     $result = $conex->prepare($sql);
     $result->execute(array(':fecha_inicio'=>$fecha_inicio, ':fecha_fin'=>$fecha_fin,':tipo'=>$tipo
-    , ':id_usu'=>$id_usu, ':id_art'=>$id_art));
+    , ':id_usu'=>$id_usu, ':id_art'=>$id_art,':e_pub'=>$estado_pub));
 
     // Guardo el id de la publicacion luego de insertar para redirigir a la publicacion finalizada
     $id_publicacion = $conex->lastInsertId();
@@ -100,11 +100,11 @@ public function altaPublicacion($conex){
 }
 public function listarPublicacion($conex){
 /** FUNCION PARA LISTAR UNA PUBLICACION EN PARTICULAR 
-    A PARTIR DE SU ID
+    A PARTIR DE SU ID Y QUE ESTE ACTIIVA (OSEA QUE E_PUB = 1)
 **/
     $id_pub =$this->getId();
 
-    $sql="SELECT * FROM `publica` WHERE `id_pub` =:id";
+    $sql="SELECT * FROM `publica` WHERE `id_pub` =:id AND `e_pub` = 1";
 
     $result = $conex->prepare($sql);
     $result->execute(array(':id'=>$id_pub));
@@ -116,15 +116,27 @@ public function listarPublicacion($conex){
 public function modificarPublicacion(){
 
 }
-public function bajaPublicacion(){
+public function bajaPublicacion($conex){
+/**CAMBIA EL ATRIBULO E_PUB A 0 PARA QUE LA PUBLICACION NO FIGURE
+**/
+    $id_pub =$this->getId();
+    $sql="UPDATE publica SET `e_pub` = 0 WHERE `id_pub` = :id_pub";
 
+    $result =$conex->prepare($sql);
+    $result->execute(array(':id_pub'=>$id_pub));
+    
+    if ($result){
+        return (true);
+    }else{
+        return (false);
+    }
 }
 public function listarPublicaciones($conex){
-/** LISTO TODAS LAS PUBLICACIONES DE UN USUARIO SEGUN SU ID
+/** LISTO TODAS LAS PUBLICACIONES DE UN USUARIO SEGUN SU ID SOLO SI ESTA ACTIVA (ESTADO = 0)
 **/
     $id_usu=$this->getIdUsu();
     // Consulta
-    $sql= "SELECT `fecha_in`,`fecha_fin`,`tipo`,`id_a`,`id_pub` FROM `publica` WHERE `id_u` = :id_usu";
+    $sql= "SELECT `fecha_in`,`fecha_fin`,`tipo`,`id_a`,`id_pub` FROM `publica` WHERE `id_u` = :id_usu AND `e_pub`= 1";
 
     $result = $conex->prepare($sql);
     $result->execute(array(':id_usu'=>$id_usu));

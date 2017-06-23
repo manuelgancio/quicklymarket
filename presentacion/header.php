@@ -62,7 +62,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 					</table>
 				</div>
 			</form>			
-      <?php
+<?php
       #LO DEL ELSE SE MUESTRA CUANDO EL USUARIO ESTA LOGUEADO#
 				}elseif(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True)
 				{

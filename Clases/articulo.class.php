@@ -147,6 +147,14 @@ public function listarArticulo($conex){
     return ($result);
 
 }
+public function buscarArtNombre($conex){
+/**BUSCA EN LA BASE TODOS LOS ARTICULOS CON ESE NOMBRE Y EN ESA CATEGORIA
+**/
+
+    $nombre =$this->getNombre();
+    
+        $sql ="SELECT * FROM categoria c JOIN articulo a ON c.id_cat = a.id_cat WHERE a.nom_a LIKE :busqueda_% and c.nomb_cat=:cat";
+}
 public function comentarArticulo(){
 
 }

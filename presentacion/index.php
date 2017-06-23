@@ -10,33 +10,62 @@ require_once($LOGICA_DIR .'funciones.php');
 
 
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>prueba TA3</title>
-		<meta name="description" content="Simple Multi-Item Slider: Category slider with CSS animations" />
-		<meta name="keywords" content="jquery plugin, item slider, categories, apple slider, css animation" />
-		<meta name="author" content="Codrops" />
+		<title>Quickly Market</title>
 		<link rel="shortcut icon" href="../favicon.ico"> 
 		<link rel="stylesheet" type="text/css" href="<?= $CSS ?>style.css"/>
         <link rel="stylesheet" type="text/css" href="<?= $CSS ?>bootstrap.min.css"/>
 		<script src="<?= $JS?>modernizr.custom.63321.js"></script>
+		<script src="<?= $JS?>busqueda.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 	</head>
 	<body>
 
 
-    
-		<div class="main">
-			<div align="center" id="busquedaInicial">
-				<form action='<?= $LOGICA?>/procesarBusqueda.php' name='buscarForm' id='buscarForm' method='POST'> 
-					<input class="w3-input" type="text" name="Busqueda" id='Busqueda' placeholder="¿Que es lo que desea buscar?" size="80">
-					<input class"w3-input" type="submit" name='btnBuscar' value='BUSCAR'>
+	<!--BUSQUEDA-->
+	<div class="container" style="margin-top:20px;">
+    <div class="row">    
+        <div class="col-xs-8 col-xs-offset-2">
+		<form action="<?=$LOGICA?>/procesarBusqueda.php" method="GET" role="form">
+		    <div class="input-group">
+                <div class="input-group-btn search-panel">
+				<?php 
+                    $conex = conectar();
+                    $c = new articulo();
+                    $datos_c= $c->listarCategorias($conex);
+                                
+                    if (empty($datos_c)){
+                    	echo "No hay categorias para elegir";        
+                    }else{
+                ?>
+                    <select id="cat" name="cat" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+						<option value="" selected> Todas las categorías </option>
+                    	<?php 
+							for($i=0;$i<count($datos_c);$i++){
+                                $id=$datos_c[$i]['id_cat'];
+                                $cat=$datos_c[$i]['nomb_cat'];                               
+                                echo "<option value=$id> $cat </option>";
+                                }
+                            }                            
+                        ?> 
+                    </select>
+                </div>    
+                <input type="text" id="busqueda" name="busqueda" class="form-control" placeholder="Busqueda...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
 				</form>
-			</div>
+            </div>
+        </div>
+	</div>
+</div>
+
+
     
 
   			<div id="mi-slider" class="mi-slider">

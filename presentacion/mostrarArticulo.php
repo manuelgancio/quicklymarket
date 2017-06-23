@@ -20,13 +20,12 @@ $conex = conectar();
 //Creo el obj publicacion con el id y llamo a la funcion listarPublicacion
     $p = new art_pub($id_pub,'','','','','');
 	$pub= $p->listarPublicacion($conex);
+    
 //Creo el obj articulo con el id y llamo a la funcion listarArticulo
     $a = new articulo ($id_art,'','','','','','','','');
 	$art = $a->listarArticulo($conex);
 
-if($pub == null){
-    echo 'La publicación no existe o fue dada de baja';
-}else 
+
 
 ?>
 <html>
