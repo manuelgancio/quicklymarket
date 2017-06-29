@@ -6,6 +6,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 include_once($LOGICA_DIR . 'funciones.php');
 include_once($CLASES_DIR . 'art_pub.class.php');
 include_once($CLASES_DIR . 'articulo.class.php');
+
 require_once($PRESENTACION_DIR . 'header.php');
 
 /** POR LA URL PASE LA VARIABLE ID_ART Y ID_PUB 

@@ -59,7 +59,7 @@ require_once($PRESENTACION_DIR . 'header.php');
             </div>
 
             
- <form action="<?= $LOGICA?>/procesarArticulo.php" method='POST' id='AltaArticulo' role="form" enctype="multipart/form-data"  onsubmit="return validarformArticulo(this)">
+ <form action="<?= $LOGICA?>/procesarArticulo.php" method='POST' id='AltaArticulo' name='AltaArticulo' role="form" enctype="multipart/form-data"  onsubmit="return validarformArticulo(this)">
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
                     <h3>Datos del artículo</h3>

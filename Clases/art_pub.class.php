@@ -145,6 +145,19 @@ public function listarPublicaciones($conex){
     return($result);
     
 }
+public function obtenerIdPubXart($conex){
+/** OBTENGO EL ID DE LA PUBLICACION CON EL ID DEL ARTICULO VINCULADO A ESTA
+**/
+    $id_art =$this->getIdArt();
+    $sql="SELECT id_pub FROM publica WHERE id_a = :id_art AND e_pub = 1"; 
+
+    $result = $conex->prepare($sql);
+    $result->execute(array('id_art'=>$id_art));
+    $result = $result->fetchALL();
+
+    return($result);
+
+}
 public function reportarPublicacion(){
 
 }

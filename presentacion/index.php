@@ -31,7 +31,7 @@ require_once($LOGICA_DIR .'funciones.php');
 	<div class="container" style="margin-top:20px;">
     <div class="row">    
         <div class="col-xs-8 col-xs-offset-2">
-		<form action="<?=$LOGICA?>/procesarBusqueda.php" method="GET" role="form">
+		<form action="<?=$PRESENTACION?>/resultados.php" method="GET" role="form">
 		    <div class="input-group">
                 <div class="input-group-btn search-panel">
 				<?php 

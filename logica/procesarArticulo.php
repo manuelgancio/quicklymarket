@@ -89,19 +89,39 @@ if(isset($_POST["btnAltaArticulo"])){
 
 }// fin if alta articulo
 
-/**PROCESAR ELIMIAR PUBLICACION (CAMBIO EL ATRIBULO E_PUB DE LA PUBLICACION PA 0)
+/**PROCESAR ELIMIAR Y MODIFICAR PUBLICACION (CAMBIO EL ATRIBULO E_PUB DE LA PUBLICACION PA 0)
 **/
 
-    if(isset($_GET["id_pub"]) and (isset($_GET["id_art"]))){
-        $id_pub = $_GET['id_pub'];
-        $id_art =$_GET['id_art'];
+    if(isset($_GET["id_pub"]) and (isset($_GET["id_art"])) and (isset($_GET['role']))){
+        $role = $_GET['role'];
+        
+        if ($role == 'delete'){
+            $id_pub = $_GET['id_pub'];
 
-        $conex = conectar();
-        //Creo el objeto publicacion 
-        $p = new art_pub($id_pub,'','','','','','');
-        $pp = $p->bajaPublicacion($conex);
+            $conex = conectar();
+            //Creo el objeto publicacion 
+            $p = new art_pub($id_pub,'','','','','','');
+            $pp = $p->bajaPublicacion($conex);
 
-        // Si la funcion devuelve true = update exitoso!
+            // Si la funcion devuelve true = update exitoso!
 
-        header('location: /presentacion/'.'publicaciones.php');
+            header('location: /presentacion/'.'publicaciones.php');
+        }elseif ($role == 'mod'){
+             $id_art =$_GET['id_art'];
+             $id_pub = $_GET['id_pub'];
+        
+             //traigo los datos de la publicacion 
+             $conex = conectar();
+             $p = new art_pub($id_pub,'','','','','','');
+             
+             $pp = $p->listarPublicacion($conex);
+
+            //traigo datos de el articulo
+            $a = new articulo($id_art,'','','','','','','','');
+            $aa = $a->listarArticulo($conex);
+
+
+           
+            
+        }
 }

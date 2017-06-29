@@ -147,13 +147,36 @@ public function listarArticulo($conex){
     return ($result);
 
 }
-public function buscarArtNombre($conex){
+public function buscarArtNombreCat($conex){
 /**BUSCA EN LA BASE TODOS LOS ARTICULOS CON ESE NOMBRE Y EN ESA CATEGORIA
 **/
 
     $nombre =$this->getNombre();
+    $cat = $this->getCategoria();
     
-        $sql ="SELECT * FROM categoria c JOIN articulo a ON c.id_cat = a.id_cat WHERE a.nom_a LIKE :busqueda_% and c.nomb_cat=:cat";
+    $sql="SELECT a.id_a, a.nom_a, a.precio, a.estado, a.stock from categoria c join articulo a on
+    c.id_cat = a.id_cat join publica p on a.id_a = p.id_a where a.nom_a like :nombre and c.id_cat= :categoria and e_pub = 1";
+    
+    $result = $conex->prepare($sql);
+    $result->execute(array(':nombre'=>'_%'.$nombre.'_%',':categoria'=>$cat));
+    $result = $result->fetchALL(); 
+    
+    return $result;
+   
+}
+public function buscarArtNombre($conex){
+/** BUSCA EN LA BASE TODOS LOS ARTICULOS CON ESE NOMBRE Y ESTADO ACTIVO
+**/
+    $nombre = $this->getNombre();
+
+    $sql="SELECT a.id_a, a.nom_a, a.precio, a.estado, a.stock from articulo a join publica p on a.id_a = p.id_a 
+    where a.nom_a like :nombre and e_pub = 1";
+
+    $result =$conex->prepare($sql);
+    $result->execute(array('nombre'=>'%'.$nombre.'_%'));
+    $result = $result->fetchALL();
+
+    return ($result);
 }
 public function comentarArticulo(){
 

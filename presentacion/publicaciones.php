@@ -41,7 +41,6 @@ require_once($PRESENTACION_DIR . 'header.php');
 			// Con el id del articulo creo el objeto articulo y llamo a la funcion listar articulo
 			$aa = new articulo ($id_art,'','','','','','','','');
 			$art = $aa->listarArticulo($conex);
-			//foreach ($art as $articulo){
 			for($x=0;$x<count($art);$x++){
 		
 		
@@ -73,8 +72,8 @@ require_once($PRESENTACION_DIR . 'header.php');
 			</div>
 			<div class="row">
 				<div class="col-sm-12" align="right">
-					<a href="#" class="btn btn-primary" role="button" value="Modificar">Modificar</a>
-					<a href="<?= $LOGICA?>/procesarArticulo.php?id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" id="btnEliminar" name="btnEliminar" class="btn btn-danger" role="button" value="Eliminar">Eliminar</a>
+					<a href="<?= $LOGICA?>/procesarArticulo.php?role=mod&id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" class="btn btn-primary" role="button" value="Modificar">Modificar</a>
+					<a href="<?= $LOGICA?>/procesarArticulo.php?role=delete&id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" id="btnEliminar" name="btnEliminar" class="btn btn-danger" role="button" value="Eliminar">Eliminar</a>
 				</div>
 			</div>
 			<span class="clearfix"></span>
