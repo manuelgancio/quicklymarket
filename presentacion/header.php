@@ -27,7 +27,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 
   <body>
 
-    <div class="container">
+    <div class="container" style="margin-bottom:30px;">
 
       <!-- The justified navigation menu is meant for single line per list item.
            Multiple lines will require custom code not provided by Bootstrap. -->
@@ -36,7 +36,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 				if(!isset($_SESSION['logged'])){
 			?>
 
-      <div id='login' class='loginClass'>
+      <div id='login' class='loginClass' style="margin-bottom:30px;">
         <!--<h3 class="text-muted">Project name</h3>-->
         
         <form action="<?= $LOGICA?>/procesarLogin.php" method="POST" id="FrmIngreso" enctype="application/x-www-form-urlencoded">		
@@ -53,7 +53,6 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 							<input  class="btn btn-success" type="submit" value="Ingresar"  title="Ingresar a la aplicación" />
 						<th>
 						<tr>
-							
 						<tr>
 							<th>
                 <a href='<?= $PRESENTACION?>/registro.php'>¿No estás registrado?</a>
@@ -61,24 +60,61 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 						<tr>
 					</table>
 				</div>
-			</form>			
+			</form>
+      </body>
 <?php
       #LO DEL ELSE SE MUESTRA CUANDO EL USUARIO ESTA LOGUEADO#
 				}elseif(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True)
 				{
           ?>
         <!--BARRA DE NAVEGACION-->
-        <div class="masthead">
-        <nav>
-          <ul class="nav nav-justified" >
-            <li><a href="<?= $PRESENTACION?>/index.php">Inicio</a></li>
-            <li><a href="<?= $PRESENTACION?>/perfil.php">Perfil</a></li>
-            <li><a href="<?= $PRESENTACION?>/publicaciones.php">Publicaciones</a></li>
-            <li><a href="<?= $PRESENTACION?>/publicarArticulo.php">Vender</a></li>
-            <li><a href="<?= $PRESENTACION?>/cerrarSesion.php">Log out</a></li>
-          </ul>
-        </nav>
+
+        <nav class="navbar navbar-default" role="navigation">
+  <!-- El logotipo y el icono que despliega el menú se agrupan
+       para mostrarlos mejor en los dispositivos móviles -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse"
+            data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Desplegar navegación</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="<?= $PRESENTACION?>/index.php"></a>
+  </div>
+ 
+  <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+       otro elemento que se pueda ocultar al minimizar la barra -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="<?= $PRESENTACION?>/index.php">Inicio</a></li>
+      <li><a href="<?= $PRESENTACION?>/perfil.php">Perfil</a></li>
+      <li><a href="<?= $PRESENTACION?>/publicarArticulo.php">Vender</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Mis actividades <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="<?= $PRESENTACION?>/publicaciones.php">Publicaciones activas</a></li>
+          <li><a href="#">Ventas</a></li>
+          <li><a href="#">Compras</a></li>
+        </ul>
+      </li>
+    </ul>
+    
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Buscar">
       </div>
+      <button type="submit" class="btn btn-default">Enviar</button>
+    </form>
+ 
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="<?= $PRESENTACION?>/cerrarSesion.php">Cerrar sesión</a></li>
+    </ul>
+  </div>
+</nav>
+        
         <?php 
         }
         ?>

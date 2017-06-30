@@ -48,6 +48,7 @@ require_once($PRESENTACION_DIR . 'header.php');
 <body>
 <div class="container">
 
+
     <hgroup class="mb20">
 		<h1>Mis Publicaciones</h1>						
 	</hgroup>

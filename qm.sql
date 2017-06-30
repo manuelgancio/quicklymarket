@@ -148,9 +148,24 @@ CREATE TABLE `empleado` (
 
 LOCK TABLES `empleado` WRITE;
 /*!40000 ALTER TABLE `empleado` DISABLE KEYS */;
-INSERT INTO `empleado` VALUES (1,'Admin.S.','chuck@qm.com','******',1),(2,'Moderador','kersey@qm.com','******',2),(3,'Moderador','q-gon@qm.com','******',3);
+INSERT INTO `empleado` VALUES (1,'Admin.S.','chuck@qm.com','******',1),(2,'Moderador','kersey@qm.com','******',2),(3,'Moderador','q-gon@qm.com','******',3),(100,'Dealer','eldealer@gmail.com','123',1);
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger insert_emp after insert on empleado for each row begin insert into registro(usuario, fecha_r, accion) values (new.correo, curdate(), 'ingreso un nuevo usuario'); end */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `estado`
@@ -356,7 +371,7 @@ CREATE TABLE `publica` (
 
 LOCK TABLES `publica` WRITE;
 /*!40000 ALTER TABLE `publica` DISABLE KEYS */;
-INSERT INTO `publica` VALUES (1,'2017-05-30','2017-07-30','\0',1,18,NULL),(2,'2017-05-30','2017-06-30','',1,16,NULL),(3,'2017-05-30','2017-06-30','',1,1,NULL),(4,'2017-05-30','2017-06-30','',3,9,NULL);
+INSERT INTO `publica` VALUES (1,'2017-05-30','2017-07-30','\0',1,18,NULL),(2,'2017-05-30','2017-06-30','\0',1,16,NULL),(3,'2017-05-30','2017-06-30','',1,1,NULL),(4,'2017-05-30','2017-06-30','',3,9,'\0');
 /*!40000 ALTER TABLE `publica` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,7 +388,7 @@ CREATE TABLE `registro` (
   `fecha_r` date DEFAULT NULL,
   `accion` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id_r`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -382,6 +397,7 @@ CREATE TABLE `registro` (
 
 LOCK TABLES `registro` WRITE;
 /*!40000 ALTER TABLE `registro` DISABLE KEYS */;
+INSERT INTO `registro` VALUES (1,'eldealer@gmail.com','2017-06-22','ingreso un nuevo usuario');
 /*!40000 ALTER TABLE `registro` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,6 +441,7 @@ CREATE TABLE `selecciona` (
   `fecha_comp` date DEFAULT NULL,
   `id_u` int(11) DEFAULT NULL,
   `id_a` int(11) DEFAULT NULL,
+  `cant` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_sel`),
   KEY `id_u` (`id_u`),
   KEY `id_a` (`id_a`),
@@ -486,4 +503,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-21  9:35:04
+-- Dump completed on 2017-06-29 17:32:07

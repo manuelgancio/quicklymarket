@@ -78,7 +78,7 @@ $conex = conectar();
                     <!-- Botones de compra -->
                     <div class="section" style="padding-bottom:20px;">
                     <!--AL COMPRAR MANDO EL ID DE LA PUBLICACION POR URL-->
-                        <a href="<?=$LOGICA?>/procesarCompra.php?id_pub=<?=$id_pub?>" class="btn btn-success"><span style="margin-right:20px" aria-hidden="true"></span> Comprar</a>
+                        <a href="<?=$LOGICA?>/procesarCompra.php?id_pub=<?=$id_pub?>&id_art=<?=$id_art?>" class="btn btn-success"><span style="margin-right:20px" aria-hidden="true"></span> Comprar</a>
                         </div>                                        
                 </div>                              
         

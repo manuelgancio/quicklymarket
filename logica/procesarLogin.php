@@ -8,7 +8,7 @@ require_once($LOGICA_DIR.'funciones.php');
 $correo= strip_tags(trim($_POST['Correo']));
 $pass = strip_tags(trim($_POST['Password']));
 
-//Guardo el login en una variable de sesión
+//Guardo el correo en una variable de sesión
 $_SESSION["Correo"] = $correo;
 
 $conex = conectar();
