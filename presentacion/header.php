@@ -69,6 +69,11 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
           ?>
         <!--BARRA DE NAVEGACION-->
 
+    <?php
+    $host= $_SERVER["HTTP_HOST"];
+    $url= $_SERVER["REQUEST_URI"];
+    $urlcomp= "http://" . $host . $url;
+    ?>
         <nav class="navbar navbar-default" role="navigation">
   <!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
@@ -101,14 +106,15 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
         </ul>
       </li>
     </ul>
-    
-    <form class="navbar-form navbar-left" role="search">
+    <?php 
+    if($urlcomp != 'http://localhost/presentacion/index.php'){?>
+    <form action="<?=$PRESENTACION?>/resultados.php" method="GET" role="form"class="navbar-form navbar-left" role="search">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Buscar">
+        <input type="text" id="busqueda" name="busqueda" class="form-control" placeholder="Buscar">
       </div>
-      <button type="submit" class="btn btn-default">Enviar</button>
+      <button type="submit" class="btn btn-default">Ir</button>
     </form>
- 
+    <?php }?>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="<?= $PRESENTACION?>/cerrarSesion.php">Cerrar sesión</a></li>
     </ul>
