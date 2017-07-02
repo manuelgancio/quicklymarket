@@ -47,12 +47,6 @@ require_once($PRESENTACION_DIR . 'header.php');
 	?>
 <body>
 <div class="container">
-
-
-    <hgroup class="mb20">
-		<h1>Mis Publicaciones</h1>						
-	</hgroup>
-
     <section class="col-xs-12 col-sm-6 col-md-12">
 		<article class="search-result row">
 			<div class="col-xs-12 col-sm-12 col-md-3">

@@ -12,7 +12,6 @@ class articulo
     private $img;
     private $id_usu;
 
-
 function __construct($id='',$nombre='',$descripcion='',$categoria='',$precio='',$estado='',$stock='',$img='',$id_usu=''){
     $this->id=$id;
     $this->nombre=$nombre;
@@ -130,6 +129,9 @@ public function bajaArticulo(){
 
 }
 public function comprarArticulo(){
+/**
+
+**/
 
 }
 public function listarArticulo($conex){

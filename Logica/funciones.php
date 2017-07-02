@@ -62,6 +62,7 @@ function comprobarCorreo($correo){
 }
 
 function obtenerIdPersona($correo){
+    /** OBTIENE EL ID_U DE LA PERSONA**/
     $conex =conectar();
     $sql ="SELECT id_u FROM usuario WHERE (`correo` = :correo)";
 

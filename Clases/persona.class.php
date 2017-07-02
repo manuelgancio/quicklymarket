@@ -176,13 +176,43 @@ public function altaPersona($conex){
 public function modificarPersona(){
 
 }
+public function cambiarContraseña($conex){
+/**UPDATE LA NUEVA CONTRASEÑA
+**/
+    $correo = $this->getCorreo();
+    $newPass = $this->getPassword();
+
+    $sql ="UPDATE `usuario` SET `pass_u`=:pass WHERE correo =:correo";
+    $result=$conex->prepare($sql);
+    $result->execute(array('pass'=>$newPass,'correo'=>$correo));
+    
+    return (true);
+}
 public function bajaPersona(){
 
 }
 public function registro(){
 
 }
-public function verPerfil(){
+public function listarPersona($conex){
+/**DEVUELVE LOS DATOS DE LA PERSONA
+
+    CON EL CORREO DEL USUARIO CONSULTO EL ID_P  DE LA TABLA USUARIO
+    Y CON ESE ID CONSULTO EN LA TABLA PERSONA EL RESTO DE LOS DATOS(NOMBRE APE TEL DIR)
+**/
+    $correo=$this->getCorreo();
+    $sql="SELECT `id_p` FROM `usuario` WHERE correo =:correo";
+    $id_p = $conex->prepare($sql);
+    $id_p->execute(array('correo'=>$correo));
+    $id_p = $id_p->fetchALL();
+    $id_p = $id_p[0]['id_p'];
+    
+    $sql="SELECT `p_nomb`,`p_ap`,`tel`,`calle`,`num` FROM `persona` WHERE `id_p` = :id_p";
+    $result=$conex->prepare($sql);
+    $result->execute(array('id_p'=>$id_p));
+    $result = $result->fetchALL();
+
+    return ($result);
 }
 public function modificarPerfil(){
 

@@ -1,7 +1,7 @@
 <?php 
 session_start();
 /** PROCESO LA COMPRA DE UN ARTICULO 
-    POR _GET RECIBO EL ID DE LA PUBLICACION 
+    POR _GET RECIBO EL ID DE LA PUBLICACION  Y EL ID DEL ARTICULO
     POR SESSION TENGO EL CORREO DEL USUARIO QUE COMPRA
 
     AL COMPRAR GUARDO FECHA EN LA TABLA SELECCIONA EN LA BASE
@@ -16,6 +16,9 @@ session_start();
         <?php
     } else {
     $id_pub = $_GET['id_pub'];
+    $id_art = $_GET['id_art'];
+
+    
 
 
     }
