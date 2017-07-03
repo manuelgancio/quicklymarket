@@ -7,7 +7,7 @@ require_once($LOGICA_DIR .'funciones.php');
 if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 	echo "Bienvenido! " . $_SESSION['Correo'];
 }
-require_once($PRESENTACION_DIR . 'header.php');
+
 ?>
 <html>
 	<head>
@@ -16,6 +16,10 @@ require_once($PRESENTACION_DIR . 'header.php');
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
+    <header><?php
+    require_once($PRESENTACION_DIR . 'header.php');
+    ?>
+    </header>
 	<body>
 	<div class="container">
 		<div class="row">
@@ -69,33 +73,17 @@ require_once($PRESENTACION_DIR . 'header.php');
                     </div>
                 </div>
             </div><!-- fin tab perfil-->
-   <div class="col-md-12  admin-content" id="settings">
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Notification</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="label label-success">allowed</div>
-                    </div>
-                </div>
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Newsletter</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="badge">Monthly</div>
-                    </div>
-                </div>
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Admin</h3>
 
+			<!--NOTIFICACION DE CUANDO ALGO VENDIO-->
+   			<div class="col-md-12  admin-content" id="settings">
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Notificaciones</h3>
                     </div>
                     <div class="panel-body">
-                         <div class="label label-success">yes</div>
+                        <div class="label label-success">No tiene notificaciones!</div>
                     </div>
                 </div>
-
             </div>
 			<!--CAMBIO CONTRASEÑA-->
             <div class="col-md-12  admin-content" id="change-password">
@@ -136,30 +124,26 @@ require_once($PRESENTACION_DIR . 'header.php');
 
                 </form>
             </div>
-
+			<!--PARA PASAR A PREMIUM-->
             <div class="col-md-9  admin-content" id="settings"></div>
-
-            <div class="col-md-9  admin-content" id="logout">
-                <div class="panel panel-info" style="margin: 1em;">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Confirm Logout</h3>
-                    </div>
-                    <div class="panel-body">
-                        Do you really want to logout ?  
-                        <a  href="#" class="label label-danger"
-                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            <span >   Yes   </span>
-                        </a>    
-                        <a href="/account" class="label label-success"> <span >  No   </span></a>
-                    </div>
-                    <form id="logout-form" action="#" method="POST" style="display: none;">
-                    </form>
-
-
-
-                </div>
-            </div>
-        </div>
+<!--			<div class="col-md-9  admin-content" id="logout">
+					<div class="panel panel-info" style="margin: 1em;">
+						<div class="panel-heading">
+							<h3 class="panel-title">Confirm Logout</h3>
+						</div>
+						<div class="panel-body">
+							Do you really want to logout ?  
+							<a  href="#" class="label label-danger"
+								onclick="event.preventDefault();
+														document.getElementById('logout-form').submit();">
+								<span >   Yes   </span>
+							</a>    
+							<a href="/account" class="label label-success"> <span >  No   </span></a>
+						</div>
+						<form id="logout-form" action="#" method="POST" style="display: none;">
+						</form>
+                	</div>
+         	   </div>
+			</div>-->
 </div><!--container-->
 </body>

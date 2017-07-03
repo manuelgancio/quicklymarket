@@ -3,7 +3,7 @@
 if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 	echo "Bienvenido! " . $_SESSION['Correo'];	
 }
-require_once($PRESENTACION_DIR .'header.php');
+
 require_once($CLASES_DIR .'articulo.class.php');
 require_once($LOGICA_DIR .'funciones.php');
 ?>
@@ -23,6 +23,9 @@ require_once($LOGICA_DIR .'funciones.php');
 		<script src="<?= $JS?>busqueda.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+		<?php
+		require_once($PRESENTACION_DIR .'header.php');
+		?>
 	</head>
 	
 

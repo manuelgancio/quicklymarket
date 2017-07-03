@@ -27,7 +27,6 @@ $conex = conectar();
 	$art = $a->listarArticulo($conex);
 
 
-
 ?>
 <html>
 <head> 
@@ -73,21 +72,33 @@ $conex = conectar();
                         <div>
                             <h3 style="margin-top:0px;"><?php echo $art[0]['stock']?></h3>
                         </div>
-                    </div>                
-        
+                        <div>
+                            <form action="<?= $LOGICA?>/procesarCompra.php" role="form" id="formCompra" method="GET">
+                                <input type="hidden" value="<?= $id_art?>" id="id_art" name="id_art">
+                                <input type="hidden" value="<?= $id_pub?>" id="id_pub" name="id_pub">
+                                <select id="cant" name="cant">
+                                    <?php
+                                    for($i=1;$i<=$art[0]['stock'];$i++){
+                                        ?>
+                                        <option value="<?=$i?>"><?php echo $i?></option>
+                                        <?php
+                                    }?>
+                                </select>
+                        </div>
+                    </div>
                     <!-- Botones de compra -->
                     <div class="section" style="padding-bottom:20px;">
                     <!--AL COMPRAR MANDO EL ID DE LA PUBLICACION POR URL-->
-                        <a href="<?=$LOGICA?>/procesarCompra.php?id_pub=<?=$id_pub?>&id_art=<?=$id_art?>" class="btn btn-success"><span style="margin-right:20px" aria-hidden="true"></span> Comprar</a>
-                        </div>                                        
+                        <input type="submit" class="btn btn-success" value="Comprar">
+                        </form>
+                    </div>                                        
                 </div>                              
         
                 <div class="col-xs-9">
                     <ul class="menu-items">
                         <li class="active">Descripción</li>
-                        <li>Garantía</li>
-                        <li>Vendedor</li>
-                        <li>Envío</li>
+                        <li>Comentarios</li>
+                       
                     </ul>
                     <div style="width:100%;border-top:1px solid silver">
                         <p style="padding:15px;">

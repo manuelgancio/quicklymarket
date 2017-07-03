@@ -128,10 +128,33 @@ public function modificarArticulo(){
 public function bajaArticulo(){
 
 }
-public function comprarArticulo(){
-/**
-
+public function comprarArticulo($conex){
+/** RESTO LA CANTIDAD DE ARTICULOS COMPRADOS DE LA TABLA ARTICULO ITEM STOCK 
 **/
+    $id_art = $this->getId();
+    $cant = $this->getStock();
+
+    $sql ="SELECT `stock` FROM `articulo` WHERE `id_a` =:id_art";
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id_art'=>$id_art));
+    $result = $result->fetchALL();
+    
+    $stock = $result[0]['stock'];
+    
+    $stock = $stock - $cant;
+
+    $sql="UPDATE `articulo` SET `stock`= :stock WHERE `id_a` = :id_art";
+    $result = $conex->prepare($sql);
+    $result->execute(array(':stock'=>$stock,':id_art'=>$id_art));
+    
+    $flag =0;
+    if($stock == 0){
+        $flag = 1;
+        return ($flag);
+    }else{
+        return ($flag);
+    }
+
 
 }
 public function listarArticulo($conex){
@@ -178,6 +201,17 @@ public function buscarArtNombre($conex){
     $result->execute(array('nombre'=>'%'.$nombre.'_%'));
     $result = $result->fetchALL();
 
+    return ($result);
+}
+public function idUsu($conex){
+    /** DEVUELVE EL ID DEL USUAIRO QUE SUBIO EL ART **/
+
+    $id_art = $this->getId();
+    $sql ="SELECT id_u FROM articulo WHERE id_a =:id_art";
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id_art'=>$id_art));
+    $result = $result->fetchALL();
+    
     return ($result);
 }
 public function comentarArticulo(){

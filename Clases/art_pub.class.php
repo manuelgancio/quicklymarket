@@ -8,7 +8,7 @@ class art_pub  //publicacion
     private $fecha_inicio;
     private $fecha_fin;
     private $tipo_venta; //boolean (venta o permuta) 1 = venta 0= permuta
-    private $estado_pub; //Bit - 0 = finalizada o bloqueada - 1 = En curso
+    private $estado_pub; //Bit - 0 = bloqueada o fin por fecha o sin stock - 1 = En curso 
     private $comentarios;//NO ESTA EN LA BASE
 
 function __construct($id='',$id_art='',$id_usu='',$fecha_inicio='',$fecha_fin='',$tipo_venta='',$estado_pub='',$comentarios=''){
@@ -113,6 +113,18 @@ public function listarPublicacion($conex){
     return ($result);
 
 }
+public function pubFinalizada($conex){
+/** CAMBIA EL ESTADO DE LA PUBLICACION A 0 
+    PARA USUAR CUANDO EL USUARIO COMPRO UN ARTICULO Y Y NO QUEDA EN STOCK
+    O CUANDO SE BLOQUEA UNA PUBLICACION
+**/ 
+    $id_pub = $this->getId();
+
+    $sql = "UPDATE `publica` SET `e_pub`=0 WHERE `id_pub` = :id_pub";
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id_pub'=>$id_pub));
+
+}
 public function modificarPublicacion(){
 
 }
@@ -161,9 +173,6 @@ public function obtenerIdPubXart($conex){
 public function reportarPublicacion(){
 
 }
-
-
-
 
 
 

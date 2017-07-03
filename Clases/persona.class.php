@@ -214,6 +214,17 @@ public function listarPersona($conex){
 
     return ($result);
 }
+public function obtenerIdUsu($conex){
+/**DEVUELVE EL ID DEL USUARIO SEGUN SU CORREO **/
+    $correo =$this->getCorreo();
+
+    $sql="SELECT `id_u` FROM `usuario` WHERE `correo` =:correo";
+    $result =$conex->prepare($sql);
+    $result->execute(array(':correo'=>$correo));
+    $result = $result->fetchALL();
+
+    return($result);
+}
 public function modificarPerfil(){
 
 }

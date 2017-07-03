@@ -27,7 +27,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
-  <body>
+  <header>
 
     <div class="container" style="margin-bottom:30px;">
 
@@ -63,7 +63,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 					</table>
 				</div>
 			</form>
-      </body>
+      
 <?php
       #LO DEL ELSE SE MUESTRA CUANDO EL USUARIO ESTA LOGUEADO#
 				}elseif(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True)
@@ -76,6 +76,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
     $url= $_SERVER["REQUEST_URI"];
     $urlcomp= "http://" . $host . $url;
     ?>
+    <div class="container">
         <nav class="navbar navbar-default" role="navigation">
   <!-- El logotipo y el icono que despliega el menú se agrupan
        para mostrarlos mejor en los dispositivos móviles -->
@@ -122,11 +123,11 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
     </ul>
   </div>
 </nav>
-        
+        </div>
         <?php 
         }
         ?>
-      
+    </header>
         
       <!-- ESTO NO VA, QUEDA COMENTADO COMO EJEMPLO
       
