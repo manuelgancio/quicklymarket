@@ -15,8 +15,8 @@ require_once($LOGICA_DIR.'funciones.php');
     if($_SESSION['logged'] != true){
     ?>
         <script type="text/javascript">
+            window.location= '../presentacion/index.php';
             window.alert("Debe iniciar sesión.");
-            
         </script>
         <?php
     } else {
@@ -54,6 +54,7 @@ require_once($LOGICA_DIR.'funciones.php');
         //El stock restante luego de la compra es 0 entonces cambio estado de la publicacion a 0
         $p = new art_pub ($id_pub,'','','','','','','');
         $p = $p->pubFinalizada($conex);
-
     }
+    
+    header('location: /presentacion/'.'misCompras.php');
     }

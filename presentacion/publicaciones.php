@@ -42,9 +42,7 @@ require_once($PRESENTACION_DIR . 'header.php');
 			$aa = new articulo ($id_art,'','','','','','','','');
 			$art = $aa->listarArticulo($conex);
 			for($x=0;$x<count($art);$x++){
-		
-		
-	?>
+?>
 <body>
 <div class="container">
     <section class="col-xs-12 col-sm-6 col-md-12">

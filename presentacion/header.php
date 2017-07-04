@@ -104,8 +104,8 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
         </a>
         <ul class="dropdown-menu">
           <li><a href="<?= $PRESENTACION?>/publicaciones.php">Publicaciones activas</a></li>
-          <li><a href="#">Ventas</a></li>
-          <li><a href="#">Compras</a></li>
+          <li><a href="<?= $PRESENTACION?>/misCompras.php">Compras</a></li>
+          <li><a href="<?= $PRESENTACION?>/misVentas.php">Ventas</a></li>
         </ul>
       </li>
     </ul>

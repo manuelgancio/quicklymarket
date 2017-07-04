@@ -99,10 +99,26 @@ ID DEL ARTICULO, FECHA DE COMPRA CANT COMPRADA
 public function listarVentas($conex){
 /**LISTO LAS PUBLICACIONES VENDIDAS DE UNA PERSONA SEGUN SU ID
 **/
+    $id_vendedor =$this->getIdVen();
+
+    $sql="SELECT id_sel, id_a, fecha_comp, cant FROM selecciona where id_v =:id_usu";
+    $result=$conex->prepare($sql);
+    $result->execute(array(':id_usu'=>$id_vendedor));
+    $result = $result->fetchALL();
+
+    return ($result);
 }
 public function listarCompras($conex){
 /**LISTA LAS PUBLICACIONES VENDIDAS DE UNA PERSONA SEGUN SU ID
 **/
+    $id_comprador = $this->getIdCom();
+
+    $sql ="SELECT id_sel,`id_a`, `fecha_comp`, cant FROM `selecciona` WHERE `id_u` =:id_usu ORDER BY fecha_comp";
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id_usu'=>$id_comprador));
+    $result = $result->fetchALL();
+
+    return ($result);
 }
 
 }

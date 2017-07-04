@@ -76,7 +76,7 @@ $conex = conectar();
                             <form action="<?= $LOGICA?>/procesarCompra.php" role="form" id="formCompra" method="GET">
                                 <input type="hidden" value="<?= $id_art?>" id="id_art" name="id_art">
                                 <input type="hidden" value="<?= $id_pub?>" id="id_pub" name="id_pub">
-                                <select id="cant" name="cant">
+                                <select id="cant" name="cant" class="drop-select">
                                     <?php
                                     for($i=1;$i<=$art[0]['stock'];$i++){
                                         ?>
