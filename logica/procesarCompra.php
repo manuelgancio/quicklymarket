@@ -10,6 +10,8 @@ require_once($LOGICA_DIR.'funciones.php');
     POR SESSION TENGO EL CORREO DEL USUARIO QUE COMPRA
 
     AL COMPRAR GUARDO FECHA EN LA TABLA SELECCIONA EN LA BASE
+
+    SI ES UNA PERMUTA REDIRIJO LOS DATOS A PROCESAR PERMUTA
 **/
     //Si no inicio sesion debe hacerlo
     if($_SESSION['logged'] != true){
@@ -19,11 +21,17 @@ require_once($LOGICA_DIR.'funciones.php');
             window.alert("Debe iniciar sesión.");
         </script>
         <?php
-    } else {
+    } else{
     $id_pub = $_GET['id_pub'];
     $id_art = $_GET['id_art'];
     $cant = $_GET['cant'];
     $fecha_compra = date("Y-m-d");
+    
+    if (isset($_GET['btnPermuta']) && ($_GET['btnPermuta'] == 'y')){
+        $flag='sel1';
+        header('location:'.$LOGICA.'/procesarPermuta.php?id_pub='.$id_pub.'&id_art='.$id_art.'&cant='.$cant.'&flag='.$flag);
+        exit();
+    }
     
     
 /** CONECTO A LA BASE **/

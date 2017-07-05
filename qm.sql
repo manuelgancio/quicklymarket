@@ -151,21 +151,6 @@ LOCK TABLES `empleado` WRITE;
 INSERT INTO `empleado` VALUES (1,'Admin.S.','chuck@qm.com','******',1),(2,'Moderador','kersey@qm.com','******',2),(3,'Moderador','q-gon@qm.com','******',3),(100,'Dealer','eldealer@gmail.com','123',1);
 /*!40000 ALTER TABLE `empleado` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger insert_emp after insert on empleado for each row begin insert into registro(usuario, fecha_r, accion) values (new.correo, curdate(), 'ingreso un nuevo usuario'); end */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `estado`
@@ -232,7 +217,7 @@ DROP TABLE IF EXISTS `permuta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `permuta` (
-  `id_per` int(11) NOT NULL DEFAULT '0',
+  `id_per` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_per` date DEFAULT NULL,
   `nro_arts1` int(11) DEFAULT NULL,
   `nro_arts2` int(11) DEFAULT NULL,
@@ -443,6 +428,7 @@ CREATE TABLE `selecciona` (
   `id_a` int(11) DEFAULT NULL,
   `cant` int(11) DEFAULT NULL,
   `id_v` int(11) DEFAULT NULL,
+  `tipo` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id_sel`),
   KEY `id_u` (`id_u`),
   KEY `id_a` (`id_a`),
@@ -504,4 +490,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-01 18:42:15
+-- Dump completed on 2017-07-04 17:26:32

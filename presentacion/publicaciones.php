@@ -38,6 +38,13 @@ require_once($PRESENTACION_DIR . 'header.php');
 			// Id art es el id del articulo de la publicacion
 			$id_art = $pub[$i]['id_a'];
 			$id_pub = $pub[$i]['id_pub'];
+			$tipo_venta =$pub[$i]['tipo'];
+			
+			if($tipo_venta == '1'){
+				$tipo_venta = 'Venta';
+			}else{
+				$tipo_venta = 'Permuta';
+			}
 			// Con el id del articulo creo el objeto articulo y llamo a la funcion listar articulo
 			$aa = new articulo ($id_art,'','','','','','','','');
 			$art = $aa->listarArticulo($conex);
@@ -61,11 +68,12 @@ require_once($PRESENTACION_DIR . 'header.php');
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7">
 				<h3><a href="<?=$PRESENTACION?>/mostrarArticulo.php?id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" title=""><?php echo $art[$x]['nom_a']?></a></h3>
+				<h4 style='color:#3ADF00'><?php echo $tipo_venta;?></h4>
 				<p><?php echo $art[$x]['descripcion']?></p>	
 			</div>
 			<div class="row">
 				<div class="col-sm-12" align="right">
-					<a href="<?= $LOGICA?>/procesarArticulo.php?role=mod&id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" class="btn btn-primary" role="button" value="Modificar">Modificar</a>
+					<!--<a href="<?= $LOGICA?>/procesarArticulo.php?role=mod&id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" class="btn btn-primary" role="button" value="Modificar">Modificar</a>-->
 					<a href="<?= $LOGICA?>/procesarArticulo.php?role=delete&id_art=<?=$id_art?>&id_pub=<?=$id_pub?>" id="btnEliminar" name="btnEliminar" class="btn btn-danger" role="button" value="Eliminar">Eliminar</a>
 				</div>
 			</div>

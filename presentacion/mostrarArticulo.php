@@ -89,8 +89,19 @@ $conex = conectar();
                     <!-- Botones de compra -->
                     <div class="section" style="padding-bottom:20px;">
                     <!--AL COMPRAR MANDO EL ID DE LA PUBLICACION POR URL-->
-                        <input type="submit" class="btn btn-success" value="Comprar">
+                    <?php 
+                        if ($pub[0]['tipo'] == '1'){
+                            ?>
+                            <input type="submit" class="btn btn-success" value="Comprar">
                         </form>
+                    <?php 
+                        }else{ 
+                            ?>
+                            <input type="hidden" value="y" id="btnPermuta" name="btnPermuta">
+                            <input type="submit" class="btn btn-success" value="Permuta">
+                    <?php
+                        }
+                    ?>
                     </div>                                        
                 </div>                              
         

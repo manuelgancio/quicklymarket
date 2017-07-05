@@ -3,7 +3,6 @@
 require_once($CLASES_DIR .'persona.class.php');
 require_once($LOGICA_DIR .'funciones.php');
 
-
 if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 	echo "Bienvenido! " . $_SESSION['Correo'];
 }
@@ -11,9 +10,9 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 ?>
 <html>
 	<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="<?= $JS?>/perfil.js"></script>
 		<link rel="stylesheet" type="text/css"  href='<?= $CSS?>/bootstrap.min.css'>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
     <header><?php
@@ -125,8 +124,8 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
                 </form>
             </div>
 			<!--PARA PASAR A PREMIUM-->
-            <div class="col-md-9  admin-content" id="settings"></div>
-<!--			<div class="col-md-9  admin-content" id="logout">
+           <!-- <div class="col-md-9  admin-content" id="settings"></div>
+			<div class="col-md-9  admin-content" id="logout">
 					<div class="panel panel-info" style="margin: 1em;">
 						<div class="panel-heading">
 							<h3 class="panel-title">Confirm Logout</h3>
@@ -135,7 +134,7 @@ if(isset($_SESSION['logged']) &&  $_SESSION['logged'] == True){
 							Do you really want to logout ?  
 							<a  href="#" class="label label-danger"
 								onclick="event.preventDefault();
-														document.getElementById('logout-form').submit();">
+								document.getElementById('logout-form').submit();">
 								<span >   Yes   </span>
 							</a>    
 							<a href="/account" class="label label-success"> <span >  No   </span></a>

@@ -170,6 +170,25 @@ public function obtenerIdPubXart($conex){
     return($result);
 
 }
+public function obtenerTipo($conex){
+/** CON EL ID DE LA PUBLICACION DEVEULVE EL TIPO (VENTA O PERMU) 
+    STRING(Venta - Permuta)**/
+
+    $id_pub = $this->getId();
+    $sql="SELECT `tipo` FROM `publica` WHERE id_pub = :id_pub";
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id_pub'=>$id_pub));
+    $result = $result->fetchALL();
+    $tipo = $result[0]['tipo'];
+
+    if($tipo == '1'){
+        $tipo = 'Venta';
+    }else{
+        $tipo = 'Permuta';
+    }
+    
+    return($tipo);
+}
 public function reportarPublicacion(){
 
 }

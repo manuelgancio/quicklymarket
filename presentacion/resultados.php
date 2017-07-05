@@ -41,7 +41,10 @@ require_once($LOGICA_DIR . 'funciones.php');
         $p= new art_pub('',$id_art,'','','','','');
         $pp = $p->obtenerIdPubXart($conex);
         $id_pub = $pp[0]['id_pub'];
-        
+        /**CON LA ID DE LA PUB OBTENGO EL TIPO (VENTA O PERMUTA)**/
+        $tipo_p = new art_pub($id_pub,'','','','','','');   
+        $tipo_p = $tipo_p->obtenerTipo($conex);
+           
         ?>
         <body>
 <div class="container">
@@ -54,6 +57,7 @@ require_once($LOGICA_DIR . 'funciones.php');
 				<ul class="meta-search">					
 					<li><i class="glyphicon glyphicon-exclamation-sign"></i>Estado: <span><?php echo $res[$i]['estado']?></span><li>
 					<li><i class="glyphicon glyphicon-usd"></i> Precio: <span><?php echo $res[$i]['precio']?></span></li>
+                    <li><i class="glyphicon glyphicon-exclamation-sign"></i>Estado <h4 style='color:#3ADF00;'><span><?php echo $tipo_p?></span><li>
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-7">

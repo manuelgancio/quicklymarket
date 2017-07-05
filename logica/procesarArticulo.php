@@ -49,6 +49,12 @@ if(isset($_POST["btnAltaArticulo"])){
         //Obtengo los datos de la publicacion
 
         $tipo_publicacion = strip_tags($_POST["tipo"]); //1= venta /0 = permuta
+        //die(var_dump($tipo_publicacion));
+        if ($tipo_publicacion == '1'){
+            $tipo_publicacion = '1';
+        }else{
+            $tipo_publicacion ='0';
+        }
         $fecha_inicio = strip_tags($_POST['fecha_inicio']); //dd-mm-yy
         $duracion = strip_tags($_POST['duracion']); // cantidad de días que dura la publicacion
 
@@ -81,7 +87,7 @@ if(isset($_POST["btnAltaArticulo"])){
         $q = $p->altaPublicacion($conex);
         //Guardo id publicacion para redireccionar a la publicacion creada
         $id_publicacion_creada = $q;
-   
+        
         
         header('location: /presentacion/'.'mostrarArticulo.php?id_pub='.$id_publicacion_creada.'&id_art='.$id_articulo_ingresado);
         
