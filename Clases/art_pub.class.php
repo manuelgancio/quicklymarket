@@ -157,6 +157,18 @@ public function listarPublicaciones($conex){
     return($result);
     
 }
+public function listarPermutas($conex){
+/** LISTO LAS PUBLICACIONES ACTIVAS Y DE TIPO PERMUTA DE UN USUARIO Y SU FECHA DE FINALIZACION ES MENOR AL DÍA DE HOY**/
+    $id_usu =$this->getIdUsu();
+    $fecha_hoy = date('y-m-d');
+
+    $sql ="SELECT `id_a` FROM `publica` WHERE (`id_u` = :id_usu) AND (`e_pub` = 1) AND (`tipo` = 0) AND (`fecha_fin` >= :fecha_hoy)";
+    $result = $conex->prepare($sql);
+    $result->execute(array(':id_usu'=>$id_usu,':fecha_hoy'=>$fecha_hoy));
+    $result = $result->fetchALL();
+
+    return ($result);  
+}
 public function obtenerIdPubXart($conex){
 /** OBTENGO EL ID DE LA PUBLICACION CON EL ID DEL ARTICULO VINCULADO A ESTA
 **/

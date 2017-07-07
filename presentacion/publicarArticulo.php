@@ -168,14 +168,8 @@ require_once($PRESENTACION_DIR . 'header.php');
                             <div class="col-md-6">                            
                             <label for="duracion"> Duración de la publicación: (1 a 60 días) </label>
                             </div>
-                          <!--  <select name="duracion" id="duracion" class="dropselectsec">
-                                <option value='15'> 15 Días </option> 
-                                <option value='30'> 30 Días </option>
-                                <option value='45'> 45 Días </option>
-                                <option value='60'> 60 Días </option> 
-                            </select>-->
-                            </div>
-                            <div class ="row">
+                        </div>
+                        <div class ="row">
                             <div class="col-md-1">
                             <div class="input-group spinner">
                                 <input type="text" class="form-control" id="duracion" name="duracion" value="1" min="1" max="60">
@@ -184,7 +178,7 @@ require_once($PRESENTACION_DIR . 'header.php');
                                 <button class="btn btn-default" type="button"><i class="fa fa-caret-down"></i></button>
                                 </div>
                             </div>
-                            <div id="error_msg_duracion"></div>
+                                <div id="error_msg_duracion"></div>
                             </div>
                         </div>
                         <ul class="list-inline pull-right">

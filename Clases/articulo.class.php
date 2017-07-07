@@ -204,7 +204,7 @@ public function buscarArtNombre($conex){
     return ($result);
 }
 public function idUsu($conex){
-    /** DEVUELVE EL ID DEL USUAIRO QUE SUBIO EL ART **/
+/** DEVUELVE EL ID DEL USUAIRO QUE SUBIO EL ART **/
 
     $id_art = $this->getId();
     $sql ="SELECT id_u FROM articulo WHERE id_a =:id_art";

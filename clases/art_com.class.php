@@ -120,5 +120,24 @@ public function listarCompras($conex){
 
     return ($result);
 }
+public function ofertaPermuta($conex){
 
+    $cant_o = $this->getCant;
+    $id_ven =$this->getIdVen;
+    $id_com =$this->getIdCom;
+    $tipo = 1; //1 = permuta
+    $fecha_compra=date('y-m-d');
+    $id_art_1 =$this->getIdArt;
+    
+    $sql="INSERT INTO `selecciona`(`fecha_comp`, `id_u`, `id_a`, `cant`, `id_v`, `tipo`) VALUES (:fecha,:id_c,:id_art,:cant,:id_v,:tipo)";
+    $result =$conex->prepare($sql);
+    $result->execute(array(':fecha'=>$fecha_com,
+                            ':id_c'=>$id_com,
+                            ':id_art'=>$id_art_1,
+                            ':cant'=>$cant_o,
+                            ':id_v'=>$id_ven,
+                            ':tipo'=>$tipo));
+
+
+}
 }

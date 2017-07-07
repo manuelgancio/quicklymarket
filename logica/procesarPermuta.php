@@ -16,7 +16,17 @@
 
 **/
 
-    if (isset($_GET['flag']) && $_GET['flag'] == 'sel1'){
-        //Proceso el articulo seleccionado
-        
-    }
+  $id_art_ofertado =$_POST['selPermu'];
+  $cant_ofertada =$_POST['txtCant'];
+  $id_usu_compra =$_POST['id_usu_compra'];
+  $id_art =$_POST['id_art'];
+  $cant_art_1 =$_POST['txtCantArt1'];
+  echo 'id articulo 1: '.$id_art; 
+  echo '<br>';
+  echo 'id art ofertado : '.$id_art_ofertado;
+  echo '<br>';
+  echo 'cant ofertada: '.$cant_ofertada;    
+  echo '<br>';
+  echo 'id usu compra'.$id_usu_compra;
+  echo '<br>';
+  echo 'cant art 1: '.$cant_art_1;
